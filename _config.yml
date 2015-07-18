@@ -6,19 +6,19 @@ pygments:         true
 permalink:        pretty
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              http://hyde.getpoole.com
+title:            MTurgeon
+tagline:          'Maxime Turgeon'
+description:      'My personal webpage'
+url:              http://turgeonmaxime.github.io
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name:           'Maxime Turgeon'
+  url:            https://twitter.com/mturg1989
 
 paginate:         5
 
 # Custom vars
-version:          2.0.0
+version:          0.0.1.9000
 
 github:
-  repo:           https://github.com/poole/hyde
+  repo:           https://github.com/turgeonmaxime

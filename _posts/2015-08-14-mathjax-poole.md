@@ -2,6 +2,7 @@
 layout: post
 title: "Using MathJax"
 tags: [MathJax, jekyll, Markdown]
+permalink: mathjax-poole
 ---
 
 I had some trouble rendering correctly the mathematical equations in my [previous post](http://turgeonmaxime.github.io/pcev/): at first I could only see the untransformed markup, then the text simply disappeared, without being transformed, and finally the equations appeared, but coloured orange. As you can see, everything now looks fine, but to fix this I ended up learning a bit more about how markdown, HTML, CSS and javacript all work together to create the website you are currently visiting. The purpose of this post is to share some of what I learned, so that future visitors can be spared some of the pain that accompanied the learning.

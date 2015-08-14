@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hello World!
+permalink: hello-world
 ---
 
 I am finally launching my personal website! It will mainly be used to share my projects and my thoughts about statistics. I will also share the slides from my talks and the occasional tutorial, whenever I feel I've learned some interesting stuff in my work (be it statistical or related to programming).

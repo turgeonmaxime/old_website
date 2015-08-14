@@ -5,17 +5,22 @@ redcarpet:
 pygments:         true
 
 # Permalinks
-permalink:        /:title
+permalink:        pretty
+relative_permalinks: true
 
 # Setup
 title:            MTurgeon
 tagline:          'Maxime Turgeon'
 description:      'My personal webpage'
 url:              http://turgeonmaxime.github.io
+baseurl:	  '/'
 
 author:
   name:           'Maxime Turgeon'
-  url:            https://twitter.com/mturg1989
+  email:	  maxime.turgeon@mail.mcgill.ca
+  url:            http://turgeonmaxime.github.io
+  github:         turgeonmaxime
+  twitter:        mturg1989
 
 paginate:         5
 

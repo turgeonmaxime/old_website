@@ -16,6 +16,7 @@ permalink: pretty
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
     {{ post.excerpt }}
+    <a href="{{ post.url }}" class="read-more-btn"> <b> Read more &#62;</b> </a>
   </div>
   {% endfor %}
 </div>

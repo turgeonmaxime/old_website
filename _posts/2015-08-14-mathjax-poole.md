@@ -58,7 +58,7 @@ If you are writing your HTML from scratch, then the above is all you need to add
 
 For those unfamiliar with it, [Markdown](http://daringfireball.net/projects/markdown/) is a lightweight markup language whose main purpose is to be easily **writable** and **readable** by humans in a basic text editor. In order to use it for your website, you also need some piece of software that will parse the Markdown and output HTML code. Since MathJax works directly on the HTML file, the main point is to make sure that the parsing will not change the equation markup. There are two things to keep in mind when choosing the parser:
 
-1. You will most certainly need to escape backslashes. In other words, the MathJax delimiters will need to be written as <code> \\\[ ... \\] </code> and ```\\( ... \\)```. As another example, since the line-breaks in a block equation are usually written using two backslashes ``` \\ ```, you will need to escape both and thus use four: ```\\\\```.
+1. You will most certainly need to escape backslashes. In other words, the MathJax delimiters will need to be written as ``` \\[ ... \\] ``` and ```\\( ... \\)```. As another example, since the line-breaks in a block equation are usually written using two backslashes ``` \\ ```, you will need to escape both and thus use four: ```\\\\```.
 
 2. Some parsers will change frequently-used symbols to HTML tags. For example, as [Chris Poole mentions](http://christopherpoole.github.io/using-mathjax-on-github-pages/), [discount](http://www.pell.portland.or.us/~orc/Code/discount/) will change ```x^2``` to ```x<sup>2</sup>```, and therefore MathJax will not be able to render the equation properly.
 

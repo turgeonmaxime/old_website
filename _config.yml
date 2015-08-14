@@ -5,7 +5,7 @@ redcarpet:
 pygments:         true
 
 # Permalinks
-permalink:        pretty
+permalink:        /:title
 
 # Setup
 title:            MTurgeon
@@ -24,3 +24,5 @@ version:          1.0.0
 
 github:
   repo:           https://github.com/turgeonmaxime/turgeonmaxime.github.io
+
+excerpt_separator: <!--more-->

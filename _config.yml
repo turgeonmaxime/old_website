@@ -2,7 +2,6 @@
 markdown:         kramdown
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "strikethrough", "superscript", "with_toc_data"]
-pygments:         true
 
 # Permalinks
 permalink:        pretty
@@ -14,6 +13,7 @@ tagline:          'Maxime Turgeon'
 description:      'My personal webpage'
 url:              http://turgeonmaxime.github.io
 baseurl:	  '/'
+encoding: 	  utf-8
 
 author:
   name:           'Maxime Turgeon'

@@ -144,6 +144,7 @@ a.sidebar-nav-item:focus {
 .read-more-btn {
   text-decoration: none;
   border: #6a9fb5 solid 0.1rem;
+  padding: 0.5rem;
 }
 
 .read-more-btn:hover {

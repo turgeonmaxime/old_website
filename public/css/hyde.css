@@ -141,6 +141,16 @@ a.sidebar-nav-item:focus {
   }
 }
 
+.read-more-btn {
+  text-decoration: none;
+  border: #6a9fb5 solide 1em;
+}
+
+.read-more-btn:hover {
+  background-color: #f2f7f9;
+  cursor: pointer;
+  transition-delay: 0.5s;
+}
 
 /*
  * Reverse layout

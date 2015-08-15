@@ -144,7 +144,7 @@ a.sidebar-nav-item:focus {
 .read-more-btn {
   text-decoration: none;
   border: #6a9fb5 solid 0.1rem;
-  padding: 0.5rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
 }
 
 .read-more-btn:hover {
@@ -248,10 +248,10 @@ a.sidebar-nav-item:focus {
 .theme-base-0e .sidebar {
   background-color: #aa759f;
 }
-.theme-base-0e .content a,
+/* .theme-base-0e .content a,
 .theme-base-0e .related-posts li a:hover {
   color: #aa759f;
-}
+} /*
 
 /* Brown */
 .theme-base-0f .sidebar {

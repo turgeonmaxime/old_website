@@ -241,10 +241,10 @@ a.sidebar-nav-item:focus {
 .theme-base-0d .sidebar {
   background-color: #6a9fb5;
 }
-.theme-base-0d .content a,
+/* .theme-base-0d .content a,
 .theme-base-0d .related-posts li a:hover {
   color: #6a9fb5;
-}
+} /*
 
 /* Magenta */
 .theme-base-0e .sidebar {

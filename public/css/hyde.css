@@ -150,7 +150,7 @@ a.sidebar-nav-item:focus {
 .read-more-btn:hover {
   text-decoration: none;
   background-color: #6a9fb5;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   transition-duration: 0.5s;
   font-weight: bold;

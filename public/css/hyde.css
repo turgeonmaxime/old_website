@@ -143,11 +143,13 @@ a.sidebar-nav-item:focus {
 
 .read-more-btn {
   text-decoration: none;
-  border: #6a9fb5 solid 1rem;
+  border: #6a9fb5 solid 0.1rem;
 }
 
 .read-more-btn:hover {
-  background-color: #f2f7f9;
+  text-decoration: none;
+  background-color: #6a9fb5;
+  color: white;
   cursor: pointer;
   transition-duration: 0.5s;
 }

@@ -6,6 +6,51 @@ permalink: optimisation
 comments: true
 ---
 
+```{r echo=FALSE}
+proftable <- function(file, lines = 10) {
+  profdata <- readLines(file)
+  interval <- as.numeric(strsplit(profdata[1L], "=")[[1L]][2L]) / 1e+06
+  filelines <- grep("#File", profdata)
+  files <- profdata[filelines]
+    profdata <- profdata[-c(1, filelines)]
+  total.time <- interval * length(profdata)
+  ncalls <- length(profdata)
+  profdata <- gsub("\\\"| $", "", profdata)
+  calls <- lapply(profdata, function(x) rev(unlist(strsplit(x, " "))))
+  stacktable <- as.data.frame(table(sapply(calls, function(x) paste(x, collapse = " > "))) / ncalls * 100, stringsAsFactors = FALSE)
+  stacktable <- stacktable[order(stacktable$Freq[], decreasing = TRUE), 2:1]
+  colnames(stacktable) <- c("PctTime", "Call")
+  stacktable <- head(stacktable, lines)
+  shortcalls = strsplit(stacktable$Call, " > ")
+  shortcalls.len <- range(sapply(shortcalls, length))
+  parent.call <- unlist(lapply(seq(shortcalls.len[1]), function(i) Reduce(intersect, lapply(shortcalls,"[[", i))))
+  shortcalls <- lapply(shortcalls, function(x) setdiff(x, parent.call))
+  stacktable$Call = sapply(shortcalls, function(x) paste(x, collapse = " > "))
+  if (length(parent.call) > 0) {
+    parent.call <- paste(paste(parent.call, collapse = " > "), "> ...")
+  } else {
+    parent.call <- "None"
+  }
+  frac <- sum(stacktable$PctTime)
+  attr(stacktable, "total.time") <- total.time
+  attr(stacktable, "parent.call") <- parent.call
+  attr(stacktable, "files") <- files
+  attr(stacktable, "total.pct.time") <- frac
+  print(stacktable, row.names=FALSE, right=FALSE, digits=3)
+  if(length(files) > 0) {
+  cat("\n")
+  cat(paste(files, collapse="\n"))
+  cat("\n")
+  }
+  cat(paste("\nParent Call:", parent.call))
+  cat(paste("\n\nTotal Time:", total.time, "seconds\n"))
+  cat(paste0("Percent of run time represented: ", format(frac, digits=3)), "%")
+  
+  invisible(stacktable)
+}
+```
+
+
 ```{r echo=FALSE, eval=FALSE, message=FALSE, results='hide'}
 options(repos = c(CRAN = "http://cran.rstudio.com"))
 install.packages(c("microbenchmark", "ggplot2"))
@@ -49,7 +94,7 @@ However, this timing will depend on your OS, it will generally differ from one r
 
 For comparisons, we will use the ```microbenchmark``` package. Its ```microbenchmark``` function will run a series of expressions multiple times and return a distribution of running times. It can also be used with ```ggplot2``` to output a nice graphical display of the comparisons.
 
-```{r message=FALSE, warning=FALSE}
+```{r microExample, message=FALSE, warning=FALSE}
 library(microbenchmark); library(ggplot2)
 # Create a dataframe with random values
 data <- data.frame("column1" = runif(1000), 
@@ -82,7 +127,7 @@ Vectorization is a way of coding in R which tries to make the best use of the pr
 
 First, let's say we want to compute the sum of all pairs of positive integers from 1 to 100. We could do this using a double loop, or in a *vectorized* way, using the ```outer``` function:
 
-```{r}
+```{r vector}
 numbers <- 1:100
 
 compare <- microbenchmark::microbenchmark("2loops" = {
@@ -104,7 +149,7 @@ There is a 40-fold difference between the two expressions!
 
 As a second example, let's compute the mean across all rows of a matrix. We will do it using three different approaches: a for loop, using the ```apply``` function, and using the ```rowMeans``` function:
 
-```{r}
+```{r rowMean}
 mat <- matrix(rnorm(20*100), nrow=100, ncol=20)
 
 compare <- microbenchmark::microbenchmark("loop" = {
@@ -141,7 +186,7 @@ vapply(foo, Filter, f = function(t) t == 1, 1L)
 
 Because we are telling ```vapply``` what type of output we expect, this can actually lead to faster code:
 
-```{r}
+```{r vapply}
 fits <- lapply(1:100, function(t) {
   lm(rnorm(100) ~ rnorm(100, 2))
 })
@@ -159,7 +204,7 @@ autoplot(compare)
 
 For this example, the efficiency gain is minimal. As another example, imagine you want to make sure that when you select columns of a matrix, you still get a matrix and not an atomic vector (when subsetting, R will by default coerce a matrix with one row or one column to a vector). You can coerce the result to a matrix, or use the (little known) ```drop``` argument of the function ```[```:
 
-```{r}
+```{r coerce}
 mat <- matrix(rnorm(20*100), nrow=100, ncol=20)
 
 compare <- microbenchmark("coerce" = {
@@ -183,7 +228,7 @@ identical(as.matrix(mat[,1]), mat[,1,drop=FALSE])
 
 Somewhat related to the dynamism of R is the fact that memory can be frequently re-allocated during your computations, and this can lead to decrease in performance. For example, it is much better to pre-allocate a vector for the results of a computation than use a for loop to continually grow the results:
 
-```{r, cache=TRUE}
+```{r malloc, cache=TRUE}
 compare <- microbenchmark("preallocate" = {
   results <- rep(NA, 10000)
   for(i in 1:length(results)) {
@@ -207,9 +252,133 @@ For other examples of what to do and what not to do, I recommend the book [R Inf
 
 ### Profiling your code
 
-### Data.table
-[Data.table pass-by-reference](http://stackoverflow.com/questions/10225098/understanding-exactly-when-a-data-table-is-a-reference-to-vs-a-copy-of-another)
+We will now assume that our code is correct (i.e. debugged) and that we are looking for bottlenecks. This process is called *profiling*. We will see three slightly different ways of profiling your R code: the method available in base R through the functions ```Rprof``` and ```summaryRprof```, the ```proftable``` function from [Noam Ross](http://www.noamross.net/blog/2013/5/2/improved-r-profiling-summaries.html), and the ```proftools``` [package](https://cran.r-project.org/web/packages/proftools/index.html) by Luke Tierney.
 
-#### Bytecode compilation
+The main concept behind code profiling in R is that, while the code is running, we randomly sample time points at which we check which functions are being called. This is done by the function ```Rprof```, which records this information in a text file. We can then call the function ```summaryRprof```, which gives a summary of this information. Let's look at an example:
 
-[JIT compiler in R](http://www.r-bloggers.com/speed-up-your-r-code-using-a-just-in-time-jit-compiler/)
+```{r warning=FALSE}
+# This example is taken from the MASS package
+library(MASS)
+
+Iris <- data.frame(rbind(iris3[,,1], iris3[,,2], iris3[,,3]),
+Sp = rep(c("s","c","v"), rep(50,3)))
+train <- sample(1:150, 75)
+table(Iris$Sp[train])
+
+Rprof(tmp <- tempfile())
+
+res <- replicate(100, expr = {
+  z <- lda(Sp ~ ., Iris, prior = c(1,1,1)/3, subset = train)
+  predict(z, Iris[-train, ])$class
+  z1 <- update(z, . ~ . - Petal.W.)
+}, simplify = FALSE)
+
+Rprof()
+
+summaryRprof(tmp)
+```
+
+There are two main components to this summary:
+
+  1. ```by.self```, which represents the time spent in the function alone.
+  
+  2. ```by.total```, which represents the time spent in the function, and all other functions it called.
+  
+Note that we have wrapped the code in a call to ```replicate```, as suggested by the [documentation](http://www.hep.by/gnu/r-patched/r-exts/R-exts_71.html#SEC71), since its running time is very small. This is actually part of the profiling, and therefore makes it even more difficult to understand the output. This is why I recommand using Noam Ross's ```proftable``` function. It takes the text file created by ```Rprof```, but summarizes it differently:
+
+```{r}
+proftable(tmp)
+```
+
+First of all, we can see that the call to ```replicate``` is now relegated to the end and removed from the general summary. Second, we see the chain of calls, which helps us understand what some functions we didn't call directly (e.g. ```.getXlevels``` or ```model.frame.default```) actually do. Finally, it only shows the first few lines, ordered by their percentage of the whole running time, and therefore it is easier to read. For all these reasons, I recommend the use of ```proftable``` over ```summaryRprof```.
+
+There exist also graphical ways of representing the call stack. One example is the ```proftools``` package. Note that it requires the ```graph``` and ```Rgraphviz``` packages, which are available on [Bioconductor](http://bioconductor.org/). 
+
+```{r proftools, warning=FALSE}
+library(proftools)
+library(graphics)
+
+Rprof(tmp <- tempfile())
+# Clustering example
+test.data <- function(dim, num, seed=12345) { 
+   set.seed(seed) 
+   matrix(rnorm(dim * num), nrow=num) 
+} 
+m <- test.data(120, 4500) 
+ 
+hclust(dist(m))
+Rprof()
+
+plotProfileCallGraph(readProfileData(tmp),
+                     score = "total")
+
+```
+
+The colours are used to represent the amount of time used by each function. As we can see, the ```dist``` function is the real bottleneck in this example, and therefore improving the running time would necessitate a faster algorithm for computing the Euclidean distance.
+
+We can see all these functions being used in a real-life [example](/optimisation-test-case), where I tried to optimise the main component of the function which computes the PCEV in order to speed up my simulations. Follow the link to see the different steps I took.
+
+### Other things to keep in mind
+
+Profiling the code is the best way to identify bottleneck, but it doesn't directly tell us how to optimise our code. Below, I give three general ideas to keep in mind.
+
+#### A faster implementation
+
+The greatest strength of R is its massive package ecosystem. Often, we don't need to write from scratch the code for a new method appearing in a paper because its authors have already published a package. Moreover, different packages may have different implementations of a same (or similar) method. This means that, sometimes, a faster implementation (or even a more efficient algorithm) can be used simply by changing the function call. One example of this is the ```slanczos``` function in the ```mgcv``` package: it computes the eigenvectors of a square matrix using a different algorithm than the one used by ```eigen```. One advantage of this particular algorithm is its *iterative* nature: eigenvectors are computed one at a time, and therefore if we only need the eigenvector corresponding to the largest eigenvalue, it is possibly faster to use ```slanczos``` than ```eigen```; from experience, I would say that this depends a lot on the size of the matrix and how many eigenvectors you need.
+
+The next example is related to our discussion of design choices for R. R implements what is called *modify-on-copy*, which means that when we modify an object a (possibly partial) copy is made. For example, when we write
+
+```{r eval=FALSE}
+x <- x[,c(1,2,4)]
+```
+
+the result of subsetting ```x``` on its columns is stored in a temporary variable, which is then assigned ```x``` (and in fact, this is what allows us to use ```x``` on both sides of the assignment operator). This allows for clearer code, but it actually slows down the execution and can lead to quite a lot of memory being used (this is why it is usually suggested to fill your memory only up to one third of its capacity, leaving space for all these copies). 
+
+Enter the [package](https://cran.r-project.org/web/packages/data.table/index.html) ```data.table```. For large datasets, it can be significantly faster (i.e. several orders of magnitude) than using a plain data frame. Its speed comes from a new implementation of the usual data frame routines (e.g. rbind, subset, etc.) using a pass-by-reference syntax; in other words, **no copy of the data is made during modification** (although this behaviour [can actually be broken if not used properly](http://stackoverflow.com/questions/10225098/understanding-exactly-when-a-data-table-is-a-reference-to-vs-a-copy-of-another)).
+
+#### Byte-code compilation
+
+Recall from above that R is an interpreted language. The code we run has to be decomposed in small parts (called *token*) which are then mapped to pre-compiled code. One way to speed up your code is therefore to do this mapping once and for all for functions (or expressions) that are used quite often; this can be done using the ```compiler``` package (which is now part of the standard packages you get by default). 
+
+```{r comp, warning=FALSE}
+library(compiler)
+
+# Original implementation of lapply
+old_lapply <- function(X, FUN, ...) {
+   FUN <- match.fun(FUN)
+   if (!is.list(X))
+    X <- as.list(X)
+   rval <- vector("list", length(X))
+   for(i in seq(along = X))
+    rval[i] <- list(FUN(X[[i]], ...))
+   names(rval) <- names(X)          
+   return(rval)
+}
+
+old_lapply_comp <- cmpfun(old_lapply)
+
+data <- lapply(1:1000, function(i) rnorm(100))
+
+compare <- microbenchmark("original"=old_lapply(data, mean),
+                          "compiled"=old_lapply_comp(data, mean),
+                          "new"=lapply(data,mean), times=1000)
+compare
+autoplot(compare)
+```
+
+As we can see, byte-code compilation actually improves speed, even though the new implementation is even faster. Similarly, expressions can be compiled using the function ```compile```, and the result can be evaluated using ```eval```:
+
+```{r eval=FALSE}
+expr <- compile(rev(1:100) + 1:100)
+eval(expr)
+```
+
+To see how the ```compiler``` package can be used to turn the usual interpreter into a "just-in-time" compiler, see the [following blog post](http://www.r-statistics.com/2012/04/speed-up-your-r-code-using-a-just-in-time-jit-compiler/).
+
+### Concluding remarks
+
+In this tutorial, we first discussed why you would want to optimise your code, and how to keep in mind some of the key features of R so that the code you write in the first place isn't too bad. We then showed how to benchmark pieces of code, and how to use some of the many profiling resources out there. 
+
+This is not the end of the discussion. Two main points I didn't discuss are how to incorporate low-level languages (e.g. C, C++, Fortran) in your code, and how to take advantage of multiple cores to do parts of the computations in parallel. These two points are already well covered in some other places, like [here](http://adv-r.had.co.nz/Rcpp.html) and [here](http://blog.yhathq.com/posts/running-r-in-parallel.html). 
+
+Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://www.stat.cmu.edu/~nmv/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.

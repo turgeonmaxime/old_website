@@ -48,9 +48,9 @@ scripts/
 .Rhistory
 .RData
 
-# Files produced by knitr
-_source/*_cache
-_source/*_files
+# files created by knitr
 _source/*.html
-_source/Rprof.out
-
+_source/*_cache/
+_source/*_files/
+_source/
+!_source/*.Rmd

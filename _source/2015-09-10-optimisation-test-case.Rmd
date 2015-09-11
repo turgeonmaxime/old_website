@@ -3,7 +3,7 @@ layout: post
 title: "Test case: Optimising PCEV"
 tags: [Optimisation, R, microbenchmark, PCEV]
 permalink: optimisation-test-case
-comments: false
+comments: true
 ---
 
 ```{r echo=FALSE, warning=FALSE, message=FALSE, results='hide'}
@@ -56,6 +56,15 @@ proftable <- function(file, lines = 10) {
 }
 ```
 
+I will give an example of code optimisation in R, using Noam Ross's ```proftable``` function and Luke Tierney's ```proftools``` package, which I discuss in my [tutorial on optimisation](http://turgeonmaxime.github.io/optimisation/). The code we will optimise comes from the main function of our [PCEV package](https://github.com/GreenwoodLab/pcev). A few months ago, while testing the method using simulations, I had to speed up my code because it was way to slow, and the result of this optimisation is given below. 
+
+For background, recall that PCEV is a dimension-reduction technique, akin to PCA, but where the components are obtained by maximising the proportion of variance explained by a set of covariates. For more information, see this [blog post](http://turgeonmaxime.github.io/pcev/). 
+
+<!--more-->
+
+### First version
+
+Below, I have reproduced the first version of the code that I was using:
 
 ```{r}
 # Compute PCEV and its p-value 
@@ -95,6 +104,8 @@ Wilks.lambda <- function(Y, x) {
 }
 ```
 
+As we can see, we are using a few common R functions, like ```lm```, matrix multiplication and ```eigen```. Let's see where the bottlenecks are. As mentioned in the [documentation](http://www.hep.by/gnu/r-patched/r-exts/R-exts_71.html#SEC71), we will wrap our code in a call to replicate so that we can accurately investigate the call stack.
+
 ```{r Wilks1, warning=FALSE}
 set.seed(12345)
 Y <- matrix(rnorm(100*20), nrow=100)
@@ -109,6 +120,12 @@ proftable(tmp)
 plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 ```
+
+Not surprisingly, ```eigen``` is taking up quite some time to run (but note that we are calling it twice). Moreover, ```lm``` is calling several other functions. This is because it tidies up the output. 
+
+### First attempt at optimising
+
+Since we only need the fitted values, we can replace our call to ```lm``` by a call to ```lm.fit```.
 
 ```{r}
 # Compute PCEV and its p-value - Take 2
@@ -157,6 +174,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 ```
 
+What we can notice now is that ```as.vector``` is being called quite often. Looking at the source code, we see that we can probably replace ```apply(Y, 2, mean)``` by the optimised function ```colMeans```. Moreover, some of the matrix multiplications involve matrix transposition; for this purpose, it is better to use the optimised functions ```crossprod``` and ```tcrossprod```:
 
 ```{r}
 # Compute PCEV and its p-value - Take 3
@@ -205,6 +223,12 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 ```
 
+This is getting much better.
+
+### Second attempt at optimising - Looking at the source code
+
+It seems the next thing we could do is try to improve the function ```eigen```. Looking at the graph of calls, we see that ```eigen``` actually calls quite a lot of helper functions to look at the data type. It is also calling ```ncol``` and ```nrow```, which gives quantities we already know about. Looking at the source code reveals that the main work is being done by an internal function, ```La_rs```. Therefore, by calling it directly, we can avoid all the type checking.
+
 ```{r}
 # Compute PCEV and its p-value - Take 4
 Wilks.lambda4 <- function(Y, x) {
@@ -251,6 +275,8 @@ proftable(tmp)
 plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 ```
+
+This looks quite good, there isn't much left to improve, except perhaps the call to ```lm.fit```. We will replace it by an explicit QR decomposition, which calls Fortran routines. 
 
 ```{r}
 # Compute PCEV and its p-value - Final take
@@ -303,6 +329,12 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 ```
 
+We have also replaced the call to ```pf``` by a call to a C routine. Finally, note that the ```diag``` function, even though it is used only once, is a very flexible function that behaves quite differently depending on its input. Therefore, we can speed it up by calling the appropriate subroutine; this is what we did above.
+
+### Benchmarking
+
+Let's do a timing comparison between the five different approaches:
+
 ```{r WilksComp}
 compare <- microbenchmark(Wilks.lambda(Y, X), 
                           Wilks.lambda2(Y, X), 
@@ -312,3 +344,13 @@ compare <- microbenchmark(Wilks.lambda(Y, X),
 compare
 autoplot(compare)
 ```
+
+We see that the final approach provides about a five-fold speed increase over the initial approach. This means we can do five times more permutations for the same amount of computing time!
+
+However, we can also see an instance of the law of [diminishing returns](https://en.wikipedia.org/wiki/Diminishing_returns): the more optimisation we did, the smaller the speed increase. This goes to show that we probably want to set a limit on how much time we spend trying to optimise code.
+
+### Concluding remarks
+
+We can get a pretty good speed increase by using some of the tools provided by R developpers. More importantly, we didn't have to leave R and write in a faster language; we simply write "better" R code. 
+
+However, one thing to keep in mind is that to improve speed up, we had to get rid of some of the type checking. This approach is fine as long as you are certain your code will not brake, or if you do it yourself before hand (especially when writing a package).

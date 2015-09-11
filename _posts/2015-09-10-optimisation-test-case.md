@@ -3,13 +3,22 @@ layout: post
 title: "Test case: Optimising PCEV"
 tags: [Optimisation, R, microbenchmark, PCEV]
 permalink: optimisation-test-case
-comments: false
+comments: true
 ---
 
 
 
 
 
+I will give an example of code optimisation in R, using Noam Ross's ```proftable``` function and Luke Tierney's ```proftools``` package, which I discuss in my [tutorial on optimisation](http://turgeonmaxime.github.io/optimisation/). The code we will optimise comes from the main function of our [PCEV package](https://github.com/GreenwoodLab/pcev). A few months ago, while testing the method using simulations, I had to speed up my code because it was way to slow, and the result of this optimisation is given below. 
+
+For background, recall that PCEV is a dimension-reduction technique, akin to PCA, but where the components are obtained by maximising the proportion of variance explained by a set of covariates. For more information, see this [blog post](http://turgeonmaxime.github.io/pcev/). 
+
+<!--more-->
+
+### First version
+
+Below, I have reproduced the first version of the code that I was using:
 
 
 {% highlight r %}
@@ -50,6 +59,8 @@ Wilks.lambda <- function(Y, x) {
 }
 {% endhighlight %}
 
+As we can see, we are using a few common R functions, like ```lm```, matrix multiplication and ```eigen```. Let's see where the bottlenecks are. As mentioned in the [documentation](http://www.hep.by/gnu/r-patched/r-exts/R-exts_71.html#SEC71), we will wrap our code in a call to replicate so that we can accurately investigate the call stack.
+
 
 {% highlight r %}
 set.seed(12345)
@@ -68,32 +79,32 @@ proftable(tmp)
 
 {% highlight text %}
 ##  PctTime
-##  11.86  
-##   6.19  
-##   3.61  
-##   3.09  
-##   3.09  
-##   3.09  
-##   3.09  
-##   2.58  
-##   2.06  
-##   2.06  
-##  Call                                                                                   
-##  eigen                                                                                  
-##  %*%                                                                                    
-##  as.vector > apply                                                                      
-##  as.vector > apply                                                                      
-##  lm > model.frame.default > .External2 > na.omit                                        
-##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame > [ > [.data.frame
-##  lm > lm.fit                                                                            
-##  lm > model.response                                                                    
-##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame                   
-##  lm > model.frame.default > makepredictcall                                             
+##  9.73   
+##  6.49   
+##  5.95   
+##  4.86   
+##  4.86   
+##  4.86   
+##  3.24   
+##  3.24   
+##  3.24   
+##  2.70   
+##  Call                                                                
+##  eigen                                                               
+##  lm > lm.fit                                                         
+##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame
+##  %*%                                                                 
+##  as.vector > apply                                                   
+##  lm > model.frame.default                                            
+##  as.vector > apply > aperm > aperm.default                           
+##  lm > model.frame.default > .External2 > na.omit                     
+##  lm > model.response                                                 
+##  as.vector > apply > mean.default                                    
 ## 
 ## Parent Call: local > eval.parent > eval > eval > eval > eval > <Anonymous> > process_file > withCallingHandlers > process_group > process_group.block > call_block > block_exec > in_dir > <Anonymous> > evaluate_call > handle > try > tryCatch > tryCatchList > tryCatchOne > doTryCatch > withCallingHandlers > withVisible > eval > eval > replicate > sapply > lapply > FUN > Wilks.lambda > ...
 ## 
-## Total Time: 3.88 seconds
-## Percent of run time represented: 40.7 %
+## Total Time: 3.7 seconds
+## Percent of run time represented: 49.2 %
 {% endhighlight %}
 
 
@@ -104,6 +115,12 @@ plotProfileCallGraph(readProfileData(tmp),
 {% endhighlight %}
 
 ![plot of chunk Wilks1](figure/source/2015-09-10-optimisation-test-case/Wilks1-1.png) 
+
+Not surprisingly, ```eigen``` is taking up quite some time to run (but note that we are calling it twice). Moreover, ```lm``` is calling several other functions. This is because it tidies up the output. 
+
+### First attempt at optimising
+
+Since we only need the fitted values, we can replace our call to ```lm``` by a call to ```lm.fit```.
 
 
 {% highlight r %}
@@ -182,6 +199,7 @@ plotProfileCallGraph(readProfileData(tmp),
 
 ![plot of chunk Wilks2](figure/source/2015-09-10-optimisation-test-case/Wilks2-1.png) 
 
+What we can notice now is that ```as.vector``` is being called quite often. Looking at the source code, we see that we can probably replace ```apply(Y, 2, mean)``` by the optimised function ```colMeans```. Moreover, some of the matrix multiplications involve matrix transposition; for this purpose, it is better to use the optimised functions ```crossprod``` and ```tcrossprod```:
 
 
 {% highlight r %}
@@ -260,6 +278,12 @@ plotProfileCallGraph(readProfileData(tmp),
 
 ![plot of chunk Wilks3](figure/source/2015-09-10-optimisation-test-case/Wilks3-1.png) 
 
+This is getting much better.
+
+### Second attempt at optimising - Looking at the source code
+
+It seems the next thing we could do is try to improve the function ```eigen```. Looking at the graph of calls, we see that ```eigen``` actually calls quite a lot of helper functions to look at the data type. It is also calling ```ncol``` and ```nrow```, which gives quantities we already know about. Looking at the source code reveals that the main work is being done by an internal function, ```La_rs```. Therefore, by calling it directly, we can avoid all the type checking.
+
 
 {% highlight r %}
 # Compute PCEV and its p-value - Take 4
@@ -336,6 +360,8 @@ plotProfileCallGraph(readProfileData(tmp),
 {% endhighlight %}
 
 ![plot of chunk Wilks4](figure/source/2015-09-10-optimisation-test-case/Wilks4-1.png) 
+
+This looks quite good, there isn't much left to improve, except perhaps the call to ```lm.fit```. We will replace it by an explicit QR decomposition, which calls Fortran routines. 
 
 
 {% highlight r %}
@@ -425,6 +451,12 @@ plotProfileCallGraph(readProfileData(tmp),
 
 ![plot of chunk Wilks5](figure/source/2015-09-10-optimisation-test-case/Wilks5-1.png) 
 
+We have also replaced the call to ```pf``` by a call to a C routine. Finally, note that the ```diag``` function, even though it is used only once, is a very flexible function that behaves quite differently depending on its input. Therefore, we can speed it up by calling the appropriate subroutine; this is what we did above.
+
+### Benchmarking
+
+Let's do a timing comparison between the five different approaches:
+
 
 {% highlight r %}
 compare <- microbenchmark(Wilks.lambda(Y, X), 
@@ -439,18 +471,18 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##                 expr      min        lq      mean   median        uq
-##   Wilks.lambda(Y, X) 3102.923 3337.8380 3712.4113 3467.839 3646.3055
-##  Wilks.lambda2(Y, X) 1246.415 1340.7800 1484.5608 1384.969 1463.0840
-##  Wilks.lambda3(Y, X)  840.446  895.7545  976.2316  928.254  984.1320
-##  Wilks.lambda4(Y, X)  717.857  761.1910  822.2173  782.858  823.6265
-##  Wilks.lambda5(Y, X)  598.120  640.3130  687.2344  655.708  688.4935
+##                 expr      min       lq      mean   median       uq
+##   Wilks.lambda(Y, X) 3033.362 3192.442 3398.8615 3264.285 3403.124
+##  Wilks.lambda2(Y, X) 1227.029 1296.591 1401.6680 1330.232 1398.653
+##  Wilks.lambda3(Y, X)  822.771  870.096 1017.3821  892.333  932.530
+##  Wilks.lambda4(Y, X)  707.024  741.235  807.2358  762.902  796.258
+##  Wilks.lambda5(Y, X)  585.576  627.769  672.1662  643.164  660.269
 ##        max neval
-##  11339.184  1000
-##   8679.291  1000
-##   4851.668  1000
-##   2731.736  1000
-##   3750.649  1000
+##   7191.689  1000
+##   4662.367  1000
+##  73275.631  1000
+##   3974.730  1000
+##   3624.639  1000
 {% endhighlight %}
 
 
@@ -460,3 +492,13 @@ autoplot(compare)
 {% endhighlight %}
 
 ![plot of chunk WilksComp](figure/source/2015-09-10-optimisation-test-case/WilksComp-1.png) 
+
+We see that the final approach provides about a five-fold speed increase over the initial approach. This means we can do five times more permutations for the same amount of computing time!
+
+However, we can also see an instance of the law of [diminishing returns](https://en.wikipedia.org/wiki/Diminishing_returns): the more optimisation we did, the smaller the speed increase. This goes to show that we probably want to set a limit on how much time we spend trying to optimise code.
+
+### Concluding remarks
+
+We can get a pretty good speed increase by using some of the tools provided by R developpers. More importantly, we didn't have to leave R and write in a faster language; we simply write "better" R code. 
+
+However, one thing to keep in mind is that to improve speed up, we had to get rid of some of the type checking. This approach is fine as long as you are certain your code will not brake, or if you do it yourself before hand (especially when writing a package).

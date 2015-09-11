@@ -22,6 +22,8 @@ First of all, before we start optimising our R code, we need to ask ourselves a 
 
 3. Is considerable speed up even possible?
 
+<!--more-->
+
 For the first point, is to useful to keep the following quote in mind:
 
 > Premature optimisation is the root of all evil. (Donald Knuth)
@@ -72,9 +74,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##      expr    min     lq     mean  median      uq     max neval
-##  extract1 22.807 24.518 43.44227 25.3735 31.0755 786.850   100
-##  extract2 11.403 12.544 16.26744 13.6850 14.8250 113.467   100
+##      expr    min     lq     mean median     uq     max neval
+##  extract1 22.807 23.948 27.75661 24.518 25.088 112.896   100
+##  extract2 11.403 12.544 14.12359 13.115 14.254  39.342   100
 {% endhighlight %}
 
 
@@ -122,9 +124,12 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##    expr      min       lq      mean   median       uq      max neval
-##  2loops 4746.187 5239.678 6007.7809 5920.475 6747.807 8389.074   100
-##    vect   96.931  117.457  157.7749  137.984  146.821 1327.381   100
+##    expr      min       lq      mean    median        uq      max
+##  2loops 4744.473 4843.970 5219.3372 4930.6380 5496.8270 7418.051
+##    vect   95.221   98.642  128.6957  134.2775  140.2645  233.204
+##  neval
+##    100
+##    100
 {% endhighlight %}
 
 
@@ -160,10 +165,10 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##      expr      min       lq       mean   median        uq      max
-##      loop 1024.616 1081.349 1176.36350 1128.674 1174.8580 2069.187
-##     apply 1132.950 1219.047 1357.58404 1276.636 1354.7505 3634.334
-##  rowMeans   19.386   21.097   30.55048   27.369   37.3465   80.396
+##      expr      min       lq       mean   median       uq      max
+##      loop  997.246 1022.334 1145.59580 1058.541 1085.909 7304.585
+##     apply 1101.590 1148.914 1183.15936 1177.993 1205.362 1382.118
+##  rowMeans   19.386   21.097   26.08034   25.658   29.079   42.763
 ##  neval
 ##    100
 ##    100
@@ -239,9 +244,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##    expr     min       lq     mean   median       uq      max neval
-##  sapply 858.693 898.3205 946.2955 933.3865 967.8825 1243.565   100
-##  vapply 778.868 807.6615 881.2092 835.3150 868.3855 2592.614   100
+##    expr     min      lq      mean   median       uq      max neval
+##  sapply 868.385 920.842 1022.8017 1001.523 1087.905 1451.110   100
+##  vapply 773.735 810.227  900.5094  848.429  915.711 2594.323   100
 {% endhighlight %}
 
 
@@ -272,8 +277,8 @@ compare
 {% highlight text %}
 ## Unit: microseconds
 ##    expr    min     lq     mean median     uq    max neval
-##  coerce 14.824 15.395 17.07142 15.395 15.965 82.106   100
-##    drop  1.710  2.281  2.70282  2.851  2.851  5.132   100
+##  coerce 14.825 15.965 19.66569 16.535 17.106 84.957   100
+##    drop  1.711  2.281  3.29012  2.851  3.421 32.501   100
 {% endhighlight %}
 
 
@@ -322,12 +327,12 @@ compare
 
 {% highlight text %}
 ## Unit: milliseconds
-##         expr       min        lq      mean    median       uq
-##  preallocate  44.61895  45.46196  52.20404  49.03471  53.4787
-##      growing 270.64611 277.21688 302.97290 296.37924 313.9291
+##         expr       min        lq      mean    median        uq
+##  preallocate  45.27976  46.70265  56.86105  49.65304  56.36493
+##      growing 274.64806 284.64304 330.59697 310.79837 346.32005
 ##       max neval
-##  137.9821   100
-##  440.0834   100
+##  133.8744   100
+##  669.4081   100
 {% endhighlight %}
 
 
@@ -336,7 +341,7 @@ compare
 autoplot(compare)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-10]('/'figure/source/2015-09-11-optimisation/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-10](figure/source/2015-09-11-optimisation/unnamed-chunk-10-1.png) 
 
 Of course, this is a silly example, because we could simply use the vectorised form ```runif(10000)```.
 
@@ -344,9 +349,362 @@ For other examples of what to do and what not to do, I recommend the book [R Inf
 
 ### Profiling your code
 
-### Data.table
-[Data.table pass-by-reference](http://stackoverflow.com/questions/10225098/understanding-exactly-when-a-data-table-is-a-reference-to-vs-a-copy-of-another)
+We will now assume that our code is correct (i.e. debugged) and that we are looking for bottlenecks. This process is called *profiling*. We will see three slightly different ways of profiling your R code: the method available in base R through the functions ```Rprof``` and ```summaryRprof```, the ```proftable``` function from [Noam Ross](http://www.noamross.net/blog/2013/5/2/improved-r-profiling-summaries.html), and the ```proftools``` [package](https://cran.r-project.org/web/packages/proftools/index.html) by Luke Tierney.
 
-#### Bytecode compilation
+The main concept behind code profiling in R is that, while the code is running, we randomly sample time points at which we check which functions are being called. This is done by the function ```Rprof```, which records this information in a text file. We can then call the function ```summaryRprof```, which gives a summary of this information. Let's look at an example:
 
-[JIT compiler in R](http://www.r-bloggers.com/speed-up-your-r-code-using-a-just-in-time-jit-compiler/)
+
+{% highlight r %}
+# This example is taken from the MASS package
+library(MASS)
+
+Iris <- data.frame(rbind(iris3[,,1], iris3[,,2], iris3[,,3]),
+Sp = rep(c("s","c","v"), rep(50,3)))
+train <- sample(1:150, 75)
+table(Iris$Sp[train])
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+##  c  s  v 
+## 25 23 27
+{% endhighlight %}
+
+
+
+{% highlight r %}
+Rprof(tmp <- tempfile())
+
+res <- replicate(100, expr = {
+  z <- lda(Sp ~ ., Iris, prior = c(1,1,1)/3, subset = train)
+  predict(z, Iris[-train, ])$class
+  z1 <- update(z, . ~ . - Petal.W.)
+}, simplify = FALSE)
+
+Rprof()
+
+summaryRprof(tmp)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## $by.self
+##                           self.time self.pct total.time total.pct
+## "match"                        0.14    11.11       0.20     15.87
+## "lda.default"                  0.06     4.76       0.48     38.10
+## "model.matrix.default"         0.06     4.76       0.12      9.52
+## "lapply"                       0.04     3.17       1.26    100.00
+## "update.default"               0.04     3.17       0.52     41.27
+## "as.list"                      0.04     3.17       0.06      4.76
+## "La.svd"                       0.04     3.17       0.06      4.76
+## "na.omit.data.frame"           0.04     3.17       0.06      4.76
+## "c"                            0.04     3.17       0.04      3.17
+## "<Anonymous>"                  0.02     1.59       1.26    100.00
+## "FUN"                          0.02     1.59       1.26    100.00
+## "deparse"                      0.02     1.59       0.12      9.52
+## "paste"                        0.02     1.59       0.12      9.52
+## "%in%"                         0.02     1.59       0.08      6.35
+## "["                            0.02     1.59       0.08      6.35
+## "[.data.frame"                 0.02     1.59       0.08      6.35
+## "sort"                         0.02     1.59       0.08      6.35
+## ".deparseOpts"                 0.02     1.59       0.06      4.76
+## "match.arg"                    0.02     1.59       0.06      4.76
+## "split"                        0.02     1.59       0.06      4.76
+## "vapply"                       0.02     1.59       0.06      4.76
+## "::"                           0.02     1.59       0.04      3.17
+## "[[.data.frame"                0.02     1.59       0.04      3.17
+## "aperm.default"                0.02     1.59       0.04      3.17
+## "formula"                      0.02     1.59       0.04      3.17
+## "makepredictcall"              0.02     1.59       0.04      3.17
+## "pmatch"                       0.02     1.59       0.04      3.17
+## ".External"                    0.02     1.59       0.02      1.59
+## ".subset2"                     0.02     1.59       0.02      1.59
+## "as.list.default"              0.02     1.59       0.02      1.59
+## "colnames"                     0.02     1.59       0.02      1.59
+## "get0"                         0.02     1.59       0.02      1.59
+## "is.array"                     0.02     1.59       0.02      1.59
+## "is.finite"                    0.02     1.59       0.02      1.59
+## "is.list"                      0.02     1.59       0.02      1.59
+## "lazyLoadDBfetch"              0.02     1.59       0.02      1.59
+## "makepredictcall.default"      0.02     1.59       0.02      1.59
+## "match.fun"                    0.02     1.59       0.02      1.59
+## "matrix"                       0.02     1.59       0.02      1.59
+## "mean.default"                 0.02     1.59       0.02      1.59
+## "model.response"               0.02     1.59       0.02      1.59
+## "order"                        0.02     1.59       0.02      1.59
+## "parse"                        0.02     1.59       0.02      1.59
+## "rownames"                     0.02     1.59       0.02      1.59
+## "t"                            0.02     1.59       0.02      1.59
+## "unique"                       0.02     1.59       0.02      1.59
+## "unique.default"               0.02     1.59       0.02      1.59
+## 
+## $by.total
+##                           total.time total.pct self.time self.pct
+## "lapply"                        1.26    100.00      0.04     3.17
+## "<Anonymous>"                   1.26    100.00      0.02     1.59
+## "FUN"                           1.26    100.00      0.02     1.59
+## "block_exec"                    1.26    100.00      0.00     0.00
+## "call_block"                    1.26    100.00      0.00     0.00
+## "doTryCatch"                    1.26    100.00      0.00     0.00
+## "eval"                          1.26    100.00      0.00     0.00
+## "eval.parent"                   1.26    100.00      0.00     0.00
+## "evaluate_call"                 1.26    100.00      0.00     0.00
+## "handle"                        1.26    100.00      0.00     0.00
+## "in_dir"                        1.26    100.00      0.00     0.00
+## "local"                         1.26    100.00      0.00     0.00
+## "process_file"                  1.26    100.00      0.00     0.00
+## "process_group"                 1.26    100.00      0.00     0.00
+## "process_group.block"           1.26    100.00      0.00     0.00
+## "replicate"                     1.26    100.00      0.00     0.00
+## "sapply"                        1.26    100.00      0.00     0.00
+## "try"                           1.26    100.00      0.00     0.00
+## "tryCatch"                      1.26    100.00      0.00     0.00
+## "tryCatchList"                  1.26    100.00      0.00     0.00
+## "tryCatchOne"                   1.26    100.00      0.00     0.00
+## "withCallingHandlers"           1.26    100.00      0.00     0.00
+## "withVisible"                   1.26    100.00      0.00     0.00
+## "lda"                           1.06     84.13      0.00     0.00
+## "lda.formula"                   1.06     84.13      0.00     0.00
+## "update.default"                0.52     41.27      0.04     3.17
+## "update"                        0.52     41.27      0.00     0.00
+## "lda.default"                   0.48     38.10      0.06     4.76
+## "model.frame.default"           0.32     25.40      0.00     0.00
+## "match"                         0.20     15.87      0.14    11.11
+## "tapply"                        0.18     14.29      0.00     0.00
+## "model.matrix.default"          0.12      9.52      0.06     4.76
+## "deparse"                       0.12      9.52      0.02     1.59
+## "paste"                         0.12      9.52      0.02     1.59
+## "model.matrix"                  0.12      9.52      0.00     0.00
+## "predict"                       0.12      9.52      0.00     0.00
+## "predict.lda"                   0.12      9.52      0.00     0.00
+## "%in%"                          0.08      6.35      0.02     1.59
+## "["                             0.08      6.35      0.02     1.59
+## "[.data.frame"                  0.08      6.35      0.02     1.59
+## "sort"                          0.08      6.35      0.02     1.59
+## ".External2"                    0.08      6.35      0.00     0.00
+## ".getXlevels"                   0.08      6.35      0.00     0.00
+## "as.factor"                     0.08      6.35      0.00     0.00
+## "svd"                           0.08      6.35      0.00     0.00
+## "as.list"                       0.06      4.76      0.04     3.17
+## "La.svd"                        0.06      4.76      0.04     3.17
+## "na.omit.data.frame"            0.06      4.76      0.04     3.17
+## ".deparseOpts"                  0.06      4.76      0.02     1.59
+## "match.arg"                     0.06      4.76      0.02     1.59
+## "split"                         0.06      4.76      0.02     1.59
+## "vapply"                        0.06      4.76      0.02     1.59
+## "as.vector"                     0.06      4.76      0.00     0.00
+## "model.frame"                   0.06      4.76      0.00     0.00
+## "na.omit"                       0.06      4.76      0.00     0.00
+## "table"                         0.06      4.76      0.00     0.00
+## "terms.formula"                 0.06      4.76      0.00     0.00
+## "c"                             0.04      3.17      0.04     3.17
+## "::"                            0.04      3.17      0.02     1.59
+## "[[.data.frame"                 0.04      3.17      0.02     1.59
+## "aperm.default"                 0.04      3.17      0.02     1.59
+## "formula"                       0.04      3.17      0.02     1.59
+## "makepredictcall"               0.04      3.17      0.02     1.59
+## "pmatch"                        0.04      3.17      0.02     1.59
+## "[["                            0.04      3.17      0.00     0.00
+## "aperm"                         0.04      3.17      0.00     0.00
+## "factor"                        0.04      3.17      0.00     0.00
+## "fixFormulaObject"              0.04      3.17      0.00     0.00
+## "formula.character"             0.04      3.17      0.00     0.00
+## "is.data.frame"                 0.04      3.17      0.00     0.00
+## "scale"                         0.04      3.17      0.00     0.00
+## "scale.default"                 0.04      3.17      0.00     0.00
+## "sort.default"                  0.04      3.17      0.00     0.00
+## "sort.int"                      0.04      3.17      0.00     0.00
+## "split.default"                 0.04      3.17      0.00     0.00
+## "sweep"                         0.04      3.17      0.00     0.00
+## "update.formula"                0.04      3.17      0.00     0.00
+## ".External"                     0.02      1.59      0.02     1.59
+## ".subset2"                      0.02      1.59      0.02     1.59
+## "as.list.default"               0.02      1.59      0.02     1.59
+## "colnames"                      0.02      1.59      0.02     1.59
+## "get0"                          0.02      1.59      0.02     1.59
+## "is.array"                      0.02      1.59      0.02     1.59
+## "is.finite"                     0.02      1.59      0.02     1.59
+## "is.list"                       0.02      1.59      0.02     1.59
+## "lazyLoadDBfetch"               0.02      1.59      0.02     1.59
+## "makepredictcall.default"       0.02      1.59      0.02     1.59
+## "match.fun"                     0.02      1.59      0.02     1.59
+## "matrix"                        0.02      1.59      0.02     1.59
+## "mean.default"                  0.02      1.59      0.02     1.59
+## "model.response"                0.02      1.59      0.02     1.59
+## "order"                         0.02      1.59      0.02     1.59
+## "parse"                         0.02      1.59      0.02     1.59
+## "rownames"                      0.02      1.59      0.02     1.59
+## "t"                             0.02      1.59      0.02     1.59
+## "unique"                        0.02      1.59      0.02     1.59
+## "unique.default"                0.02      1.59      0.02     1.59
+## "getExportedValue"              0.02      1.59      0.00     0.00
+## "rep"                           0.02      1.59      0.00     0.00
+## "rep.factor"                    0.02      1.59      0.00     0.00
+## "simplify2array"                0.02      1.59      0.00     0.00
+## "structure"                     0.02      1.59      0.00     0.00
+## "terms"                         0.02      1.59      0.00     0.00
+## 
+## $sample.interval
+## [1] 0.02
+## 
+## $sampling.time
+## [1] 1.26
+{% endhighlight %}
+
+There are two main components to this summary:
+
+  1. ```by.self```, which represents the time spent in the function alone.
+  
+  2. ```by.total```, which represents the time spent in the function, and all other functions it called.
+  
+Note that we have wrapped the code in a call to ```replicate```, as suggested by the [documentation](http://www.hep.by/gnu/r-patched/r-exts/R-exts_71.html#SEC71), since its running time is very small. This is actually part of the profiling, and therefore makes it even more difficult to understand the output. This is why I recommand using Noam Ross's ```proftable``` function. It takes the text file created by ```Rprof```, but summarizes it differently:
+
+
+{% highlight r %}
+proftable(tmp)
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in eval(expr, envir, enclos): impossible de trouver la fonction "proftable"
+{% endhighlight %}
+
+First of all, we can see that the call to ```replicate``` is now relegated to the end and removed from the general summary. Second, we see the chain of calls, which helps us understand what some functions we didn't call directly (e.g. ```.getXlevels``` or ```model.frame.default```) actually do. Finally, it only shows the first few lines, ordered by their percentage of the whole running time, and therefore it is easier to read. For all these reasons, I recommend the use of ```proftable``` over ```summaryRprof```.
+
+There exist also graphical ways of representing the call stack. One example is the ```proftools``` package. Note that it requires the ```graph``` and ```Rgraphviz``` packages, which are available on [Bioconductor](http://bioconductor.org/). 
+
+
+{% highlight r %}
+library(proftools)
+library(graphics)
+
+Rprof(tmp <- tempfile())
+# Clustering example
+test.data <- function(dim, num, seed=12345) { 
+   set.seed(seed) 
+   matrix(rnorm(dim * num), nrow=num) 
+} 
+m <- test.data(120, 4500) 
+ 
+hclust(dist(m))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## 
+## Call:
+## hclust(d = dist(m))
+## 
+## Cluster method   : complete 
+## Distance         : euclidean 
+## Number of objects: 4500
+{% endhighlight %}
+
+
+
+{% highlight r %}
+Rprof()
+
+plotProfileCallGraph(readProfileData(tmp),
+                     score = "total")
+{% endhighlight %}
+
+![plot of chunk proftools](figure/source/2015-09-11-optimisation/proftools-1.png) 
+
+The colours are used to represent the amount of time used by each function. As we can see, the ```dist``` function is the real bottleneck in this example, and therefore improving the running time would necessitate a faster algorithm for computing the Euclidean distance.
+
+We can see all these functions being used in a real-life [example](/optimisation-test-case), where I tried to optimise the main component of the function which computes the PCEV in order to speed up my simulations. Follow the link to see the different steps I took.
+
+### Other things to keep in mind
+
+Profiling the code is the best way to identify bottleneck, but it doesn't directly tell us how to optimise our code. Below, I give three general ideas to keep in mind.
+
+#### A faster implementation
+
+The greatest strength of R is its massive package ecosystem. Often, we don't need to write from scratch the code for a new method appearing in a paper because its authors have already published a package. Moreover, different packages may have different implementations of a same (or similar) method. This means that, sometimes, a faster implementation (or even a more efficient algorithm) can be used simply by changing the function call. One example of this is the ```slanczos``` function in the ```mgcv``` package: it computes the eigenvectors of a square matrix using a different algorithm than the one used by ```eigen```. One advantage of this particular algorithm is its *iterative* nature: eigenvectors are computed one at a time, and therefore if we only need the eigenvector corresponding to the largest eigenvalue, it is possibly faster to use ```slanczos``` than ```eigen```; from experience, I would say that this depends a lot on the size of the matrix and how many eigenvectors you need.
+
+The next example is related to our discussion of design choices for R. R implements what is called *modify-on-copy*, which means that when we modify an object a (possibly partial) copy is made. For example, when we write
+
+
+{% highlight r %}
+x <- x[,c(1,2,4)]
+{% endhighlight %}
+
+the result of subsetting ```x``` on its columns is stored in a temporary variable, which is then assigned ```x``` (and in fact, this is what allows us to use ```x``` on both sides of the assignment operator). This allows for clearer code, but it actually slows down the execution and can lead to quite a lot of memory being used (this is why it is usually suggested to fill your memory only up to one third of its capacity, leaving space for all these copies). 
+
+Enter the [package](https://cran.r-project.org/web/packages/data.table/index.html) ```data.table```. For large datasets, it can be significantly faster (i.e. several orders of magnitude) than using a plain data frame. Its speed comes from a new implementation of the usual data frame routines (e.g. rbind, subset, etc.) using a pass-by-reference syntax; in other words, **no copy of the data is made during modification** (although this behaviour [can actually be broken if not used properly](http://stackoverflow.com/questions/10225098/understanding-exactly-when-a-data-table-is-a-reference-to-vs-a-copy-of-another)).
+
+#### Byte-code compilation
+
+Recall from above that R is an interpreted language. The code we run has to be decomposed in small parts (called *token*) which are then mapped to pre-compiled code. One way to speed up your code is therefore to do this mapping once and for all for functions (or expressions) that are used quite often; this can be done using the ```compiler``` package (which is now part of the standard packages you get by default). 
+
+
+{% highlight r %}
+library(compiler)
+
+# Original implementation of lapply
+old_lapply <- function(X, FUN, ...) {
+   FUN <- match.fun(FUN)
+   if (!is.list(X))
+    X <- as.list(X)
+   rval <- vector("list", length(X))
+   for(i in seq(along = X))
+    rval[i] <- list(FUN(X[[i]], ...))
+   names(rval) <- names(X)          
+   return(rval)
+}
+
+old_lapply_comp <- cmpfun(old_lapply)
+
+data <- lapply(1:1000, function(i) rnorm(100))
+
+compare <- microbenchmark("original"=old_lapply(data, mean),
+                          "compiled"=old_lapply_comp(data, mean),
+                          "new"=lapply(data,mean), times=1000)
+compare
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Unit: milliseconds
+##      expr       min        lq      mean    median        uq       max
+##  original 11.750284 12.093533 12.562759 12.228665 12.447045 101.48475
+##  compiled  9.602983  9.920004 10.275797 10.033755 10.263822  17.22573
+##       new  8.498544  8.779643  9.206123  8.882846  9.077562  98.53578
+##  neval
+##   1000
+##   1000
+##   1000
+{% endhighlight %}
+
+
+
+{% highlight r %}
+autoplot(compare)
+{% endhighlight %}
+
+![plot of chunk comp](figure/source/2015-09-11-optimisation/comp-1.png) 
+
+As we can see, byte-code compilation actually improves speed, even though the new implementation is even faster. Similarly, expressions can be compiled using the function ```compile```, and the result can be evaluated using ```eval```:
+
+
+{% highlight r %}
+expr <- compile(rev(1:100) + 1:100)
+eval(expr)
+{% endhighlight %}
+
+To see how the ```compiler``` package can be used to turn the usual interpreter into a "just-in-time" compiler, see the [following blog post](http://www.r-statistics.com/2012/04/speed-up-your-r-code-using-a-just-in-time-jit-compiler/).
+
+### Concluding remarks
+
+In this tutorial, we first discussed why you would want to optimise your code, and how to keep in mind some of the key features of R so that the code you write in the first place isn't too bad. We then showed how to benchmark pieces of code, and how to use some of the many profiling resources out there. 
+
+This is not the end of the discussion. Two main points I didn't discuss are how to incorporate low-level languages (e.g. C, C++, Fortran) in your code, and how to take advantage of multiple cores to do parts of the computations in parallel. These two points are already well covered in some other places, like [here](http://adv-r.had.co.nz/Rcpp.html) and [here](http://blog.yhathq.com/posts/running-r-in-parallel.html). 
+
+Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://www.stat.cmu.edu/~nmv/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.

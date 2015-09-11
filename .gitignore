@@ -42,7 +42,15 @@ validation-report.json
 node_modules
 CNAME
 cache/
+scripts/
 
 # R files to ignore
 .Rhistory
 .RData
+
+# files created by knitr
+_source/*.html
+_source/*_cache/
+_source/*_files/
+_source/
+!_source/*.Rmd

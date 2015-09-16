@@ -85,7 +85,7 @@ compare
 ggplot2::autoplot(compare)
 {% endhighlight %}
 
-![plot of chunk unnamed-chunk-3](figure/source/2015-09-11-optimisation/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](/figure/source/2015-09-11-optimisation/unnamed-chunk-3-1.png) 
 
 So we compared two ways of extracting an element in the data frame: first, we think of ```data``` as being matrix-like and extract based on its row and column position; or we remember that data frames are actually *lists* and extract the element by using the list methods. As we can see, the latter is about twice faster than the former. However, by looking at the units (i.e. microseconds), we see that the difference is quite minimal and unlikely to improve your code (unless you perform this operation millions of times). 
 

@@ -52,5 +52,5 @@ scripts/
 _source/*.html
 _source/*_cache/
 _source/*_files/
-_source/
+_source/Rprof.out
 !_source/*.Rmd

@@ -79,32 +79,32 @@ proftable(tmp)
 
 {% highlight text %}
 ##  PctTime
-##  9.73   
-##  6.49   
-##  5.95   
-##  4.86   
-##  4.86   
-##  4.86   
-##  3.24   
-##  3.24   
-##  3.24   
-##  2.70   
-##  Call                                                                
-##  eigen                                                               
-##  lm > lm.fit                                                         
-##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame
-##  %*%                                                                 
-##  as.vector > apply                                                   
-##  lm > model.frame.default                                            
-##  as.vector > apply > aperm > aperm.default                           
-##  lm > model.frame.default > .External2 > na.omit                     
-##  lm > model.response                                                 
-##  as.vector > apply > mean.default                                    
+##  12.12  
+##   6.06  
+##   5.05  
+##   4.55  
+##   4.55  
+##   4.04  
+##   3.03  
+##   3.03  
+##   2.02  
+##   1.52  
+##  Call                                                                        
+##  eigen                                                                       
+##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame        
+##  %*%                                                                         
+##  as.vector > apply                                                           
+##  lm > lm.fit                                                                 
+##  lm > model.response                                                         
+##  lm > model.frame.default                                                    
+##  lm > model.matrix > model.matrix.default > .External2                       
+##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame > is.na
+##  -                                                                           
 ## 
 ## Parent Call: local > eval.parent > eval > eval > eval > eval > <Anonymous> > process_file > withCallingHandlers > process_group > process_group.block > call_block > block_exec > in_dir > <Anonymous> > evaluate_call > handle > try > tryCatch > tryCatchList > tryCatchOne > doTryCatch > withCallingHandlers > withVisible > eval > eval > replicate > sapply > lapply > FUN > Wilks.lambda > ...
 ## 
-## Total Time: 3.7 seconds
-## Percent of run time represented: 49.2 %
+## Total Time: 3.96 seconds
+## Percent of run time represented: 46 %
 {% endhighlight %}
 
 
@@ -114,7 +114,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 {% endhighlight %}
 
-![plot of chunk Wilks1](figure/source/2015-09-10-optimisation-test-case/Wilks1-1.png) 
+![plot of chunk Wilks1](/figure/source/2015-09-10-optimisation-test-case/Wilks1-1.png) 
 
 Not surprisingly, ```eigen``` is taking up quite some time to run (but note that we are calling it twice). Moreover, ```lm``` is calling several other functions. This is because it tidies up the output. 
 
@@ -471,18 +471,18 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##                 expr      min       lq      mean   median       uq
-##   Wilks.lambda(Y, X) 3033.362 3192.442 3398.8615 3264.285 3403.124
-##  Wilks.lambda2(Y, X) 1227.029 1296.591 1401.6680 1330.232 1398.653
-##  Wilks.lambda3(Y, X)  822.771  870.096 1017.3821  892.333  932.530
-##  Wilks.lambda4(Y, X)  707.024  741.235  807.2358  762.902  796.258
-##  Wilks.lambda5(Y, X)  585.576  627.769  672.1662  643.164  660.269
+##                 expr      min       lq      mean    median       uq
+##   Wilks.lambda(Y, X) 3014.549 3342.973 3534.5378 3405.6935 3514.598
+##  Wilks.lambda2(Y, X) 1232.162 1365.584 1456.9680 1401.2205 1447.691
+##  Wilks.lambda3(Y, X)  830.185  916.852  976.6661  939.6590  968.738
+##  Wilks.lambda4(Y, X)  708.735  780.578  827.1132  799.9650  823.057
+##  Wilks.lambda5(Y, X)  587.857  643.165  711.7051  660.5555  677.946
 ##        max neval
-##   7191.689  1000
-##   4662.367  1000
-##  73275.631  1000
-##   3974.730  1000
-##   3624.639  1000
+##   7903.284  1000
+##   4459.389  1000
+##   4285.483  1000
+##   4312.851  1000
+##  22526.724  1000
 {% endhighlight %}
 
 
@@ -491,7 +491,7 @@ compare
 autoplot(compare)
 {% endhighlight %}
 
-![plot of chunk WilksComp](figure/source/2015-09-10-optimisation-test-case/WilksComp-1.png) 
+![plot of chunk WilksComp](/figure/source/2015-09-10-optimisation-test-case/WilksComp-1.png) 
 
 We see that the final approach provides about a five-fold speed increase over the initial approach. This means we can do five times more permutations for the same amount of computing time!
 

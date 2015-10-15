@@ -99,6 +99,7 @@ library(microbenchmark); library(ggplot2)
 data <- data.frame("column1" = runif(1000), 
                    "column2" = rnorm(1000))
 
+# Extract the first entry of the 666th row
 compare <- microbenchmark::microbenchmark( "extract1" = {
   data[666, 1]
 }, "extract2" = {
@@ -170,6 +171,52 @@ Again, we see close to a 40-fold difference.
 
 What vectorization does is essentially moving the for loop from R to C. Moreover, the function ```apply``` is simply a wrapper for a loop, and this is why it is usually as fast as a loop (in this example, it is actually *slower* than a loop, because we are not recording the results of the loop but apply is). 
 
+Let's look at another example:
+
+```{r}
+# Create a vector of values
+categories <- c("Low", "Middle", "High")
+
+values <- sample(categories, size = 1000, replace = TRUE)
+
+# Change the vector of values to numeric
+# 1. Using a loop
+values_num1 <- rep_len(NA, length(values))
+for (i in 1:length(values_num1)) {
+  if (values[i] == "Low") values_num1[i] <- 0
+  if (values[i] == "Middle") values_num1[i] <- 1
+  if (values[i] == "High") values_num1[i] <- 2
+}
+
+# 2. Using vectorization
+values_num2 <- 1 * as.numeric(values == "Middle") + 
+  2 * as.numeric(values == "High")
+
+identical(values_num1, values_num2)
+```
+
+
+```{r compareTwoImpl}
+# Compare the two implementations
+library(ggplot2); library(microbenchmark)
+
+compare <- microbenchmark("loop" = {
+  values_num1 <- rep_len(NA, length(values))
+  for (i in 1:length(values_num1)) {
+    if (values[i] == "Low") values_num1[i] <- 0
+    if (values[i] == "Middle") values_num1[i] <- 1
+    if (values[i] == "High") values_num1[i] <- 2
+  }
+}, "vectorized" = {
+  values_num2 <- 1 * as.numeric(values == "Middle") + 2 * as.numeric(values == "High")
+})
+
+compare
+autoplot(compare)
+
+```
+
+
 #### R is a dynamic language
 
 Unlike C/C++, objects in R can change quite a lot during a computation: data frames can become matrices, we can flatten lists and create atomic vectors, the class of an object can be modified multiple times, etc. This flexibility, however, usually comes with a computational cost. For example, most functions you can find in packages will perform "input checking" to control the behaviour. Understanding R coercion rules can sometimes lead to faster (and more predictable) code.
@@ -225,7 +272,7 @@ identical(as.matrix(mat[,1]), mat[,1,drop=FALSE])
 
 #### Memory allocation
 
-Somewhat related to the dynamism of R is the fact that memory can be frequently re-allocated during your computations, and this can lead to decrease in performance. For example, it is much better to pre-allocate a vector for the results of a computation than use a for loop to continually grow the results:
+Somewhat related to the dynamism of R is the fact that memory can be frequently re-allocated during your computations, and this can lead to decrease in performance. For example, it is better to pre-allocate a vector for the results of a computation than use a ```for``` loop to continually grow the results:
 
 ```{r, cache=TRUE}
 compare <- microbenchmark("preallocate" = {
@@ -245,7 +292,25 @@ compare
 autoplot(compare)
 ```
 
-Of course, this is a silly example, because we could simply use the vectorised form ```runif(10000)```.
+Of course, this is a silly example, because we could simply use the vectorised form ```runif(10000)```:
+
+```{r, cache=TRUE}
+compare <- microbenchmark("preallocate" = {
+  results <- rep(NA, 10000)
+  for(i in 1:length(results)) {
+    results[i] <- runif(1)
+  }
+}, "growing" = {
+  results = NULL
+  for(i in 1:10000) {
+    results <- c(results, runif(1))
+  }
+}, "vectorize" = {
+  results = runif(10000)
+  })
+
+autoplot(compare)
+```
 
 For other examples of what to do and what not to do, I recommend the book [R Inferno](http://www.burns-stat.com/pages/Tutor/R_inferno.pdf). For example, memory allocation is discussed in Circle 2 and vectorisation, in Circle 3.
 
@@ -380,4 +445,6 @@ In this tutorial, we first discussed why you would want to optimise your code, a
 
 This is not the end of the discussion. Two main points I didn't discuss are how to incorporate low-level languages (e.g. C, C++, Fortran) in your code, and how to take advantage of multiple cores to do parts of the computations in parallel. These two points are already well covered in some other places, like [here](http://adv-r.had.co.nz/Rcpp.html) and [here](http://blog.yhathq.com/posts/running-r-in-parallel.html). 
 
-Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://www.stat.cmu.edu/~nmv/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.
+Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://edustatistics.org/nathanvan/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.
+
+**Update** (2015-10-15): I've actually switched to the ATLAS system a few weeks ago, and the improvements I got are similar to the results discussed in the link above. For Ubuntu users, I recommend to make the switch, since there doesn't seem to be any downside!

@@ -47,6 +47,7 @@ scripts/
 # R files to ignore
 .Rhistory
 .RData
+_source/*.R
 
 # files created by knitr
 _source/*.html

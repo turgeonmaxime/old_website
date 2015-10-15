@@ -79,32 +79,32 @@ proftable(tmp)
 
 {% highlight text %}
 ##  PctTime
-##  12.12  
-##   6.06  
-##   5.05  
-##   4.55  
-##   4.55  
-##   4.04  
-##   3.03  
-##   3.03  
-##   2.02  
-##   1.52  
-##  Call                                                                        
-##  eigen                                                                       
-##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame        
-##  %*%                                                                         
-##  as.vector > apply                                                           
-##  lm > lm.fit                                                                 
-##  lm > model.response                                                         
-##  lm > model.frame.default                                                    
-##  lm > model.matrix > model.matrix.default > .External2                       
-##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame > is.na
-##  -                                                                           
+##  11.95  
+##   7.55  
+##   6.92  
+##   4.40  
+##   3.14  
+##   3.14  
+##   3.14  
+##   2.52  
+##   2.52  
+##   2.52  
+##  Call                                                                
+##  eigen                                                               
+##  lm > model.frame.default > .External2 > na.omit > na.omit.data.frame
+##  %*%                                                                 
+##  lm > lm.fit                                                         
+##  as.vector > apply                                                   
+##  as.vector > apply > mean.default                                    
+##  lm                                                                  
+##                                                                      
+##  lm > model.frame.default                                            
+##  lm > lm.fit > structure                                             
 ## 
 ## Parent Call: local > eval.parent > eval > eval > eval > eval > <Anonymous> > process_file > withCallingHandlers > process_group > process_group.block > call_block > block_exec > in_dir > <Anonymous> > evaluate_call > handle > try > tryCatch > tryCatchList > tryCatchOne > doTryCatch > withCallingHandlers > withVisible > eval > eval > replicate > sapply > lapply > FUN > Wilks.lambda > ...
 ## 
-## Total Time: 3.96 seconds
-## Percent of run time represented: 46 %
+## Total Time: 3.18 seconds
+## Percent of run time represented: 47.8 %
 {% endhighlight %}
 
 
@@ -197,7 +197,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 {% endhighlight %}
 
-![plot of chunk Wilks2](figure/source/2015-09-10-optimisation-test-case/Wilks2-1.png) 
+![plot of chunk Wilks2](/figure/source/2015-09-10-optimisation-test-case/Wilks2-1.png) 
 
 What we can notice now is that ```as.vector``` is being called quite often. Looking at the source code, we see that we can probably replace ```apply(Y, 2, mean)``` by the optimised function ```colMeans```. Moreover, some of the matrix multiplications involve matrix transposition; for this purpose, it is better to use the optimised functions ```crossprod``` and ```tcrossprod```:
 
@@ -276,7 +276,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 {% endhighlight %}
 
-![plot of chunk Wilks3](figure/source/2015-09-10-optimisation-test-case/Wilks3-1.png) 
+![plot of chunk Wilks3](/figure/source/2015-09-10-optimisation-test-case/Wilks3-1.png) 
 
 This is getting much better.
 
@@ -359,7 +359,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 {% endhighlight %}
 
-![plot of chunk Wilks4](figure/source/2015-09-10-optimisation-test-case/Wilks4-1.png) 
+![plot of chunk Wilks4](/figure/source/2015-09-10-optimisation-test-case/Wilks4-1.png) 
 
 This looks quite good, there isn't much left to improve, except perhaps the call to ```lm.fit```. We will replace it by an explicit QR decomposition, which calls Fortran routines. 
 
@@ -449,7 +449,7 @@ plotProfileCallGraph(readProfileData(tmp),
                      score = "total")
 {% endhighlight %}
 
-![plot of chunk Wilks5](figure/source/2015-09-10-optimisation-test-case/Wilks5-1.png) 
+![plot of chunk Wilks5](/figure/source/2015-09-10-optimisation-test-case/Wilks5-1.png) 
 
 We have also replaced the call to ```pf``` by a call to a C routine. Finally, note that the ```diag``` function, even though it is used only once, is a very flexible function that behaves quite differently depending on its input. Therefore, we can speed it up by calling the appropriate subroutine; this is what we did above.
 
@@ -471,18 +471,18 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##                 expr      min       lq      mean    median       uq
-##   Wilks.lambda(Y, X) 3014.549 3342.973 3534.5378 3405.6935 3514.598
-##  Wilks.lambda2(Y, X) 1232.162 1365.584 1456.9680 1401.2205 1447.691
-##  Wilks.lambda3(Y, X)  830.185  916.852  976.6661  939.6590  968.738
-##  Wilks.lambda4(Y, X)  708.735  780.578  827.1132  799.9650  823.057
-##  Wilks.lambda5(Y, X)  587.857  643.165  711.7051  660.5555  677.946
-##        max neval
-##   7903.284  1000
-##   4459.389  1000
-##   4285.483  1000
-##   4312.851  1000
-##  22526.724  1000
+##                 expr      min        lq      mean    median        uq
+##   Wilks.lambda(Y, X) 2713.097 2840.7870 2995.7128 2879.5495 2929.4545
+##  Wilks.lambda2(Y, X) 1081.445 1130.2465 1207.0996 1149.9700 1174.3330
+##  Wilks.lambda3(Y, X)  751.484  779.6130  835.2625  796.6150  819.6835
+##  Wilks.lambda4(Y, X)  641.140  668.6805  714.0665  686.3100  708.8290
+##  Wilks.lambda5(Y, X)  537.176  573.4980  632.6647  593.3795  612.7735
+##       max neval
+##  8589.677  1000
+##  4597.671  1000
+##  4056.642  1000
+##  8361.569  1000
+##  6253.913  1000
 {% endhighlight %}
 
 

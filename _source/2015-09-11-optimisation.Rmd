@@ -447,4 +447,8 @@ This is not the end of the discussion. Two main points I didn't discuss are how 
 
 Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://edustatistics.org/nathanvan/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.
 
+In conclusion, another quote from Donald Knuth (pointed out by Vince Forgetta):
+
+> If you optimize everything, you will always be unhappy. (Donald Knuth)
+
 **Update** (2015-10-15): I've actually switched to the ATLAS system a few weeks ago, and the improvements I got are similar to the results discussed in the link above. For Ubuntu users, I recommend to make the switch, since there doesn't seem to be any downside!

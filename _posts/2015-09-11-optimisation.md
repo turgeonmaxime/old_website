@@ -77,9 +77,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##      expr    min      lq     mean median     uq     max neval
-##  extract1 21.647 22.7680 26.37619 23.255 23.796 102.319   100
-##  extract2 10.642 11.6065 13.89106 12.671 13.250  46.116   100
+##      expr    min      lq     mean  median      uq    max neval
+##  extract1 22.021 22.9945 24.74206 23.2465 23.7395 98.219   100
+##  extract2 10.384 11.3535 13.13219 12.3750 12.8605 57.486   100
 {% endhighlight %}
 
 
@@ -127,9 +127,12 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##    expr      min       lq      mean   median        uq      max neval
-##  2loops 3039.416 3123.823 3474.5898 3174.916 3513.3645 7535.196   100
-##    vect   79.135   81.205  100.9675   99.088  109.8815  234.407   100
+##    expr      min        lq       mean    median        uq      max
+##  2loops 3030.975 3093.1255 3324.46216 3159.6165 3231.6265 5304.771
+##    vect   79.854   82.4825   95.66377   92.1305  104.1775  162.883
+##  neval
+##    100
+##    100
 {% endhighlight %}
 
 
@@ -165,10 +168,10 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##      expr     min      lq      mean   median        uq      max neval
-##      loop 749.722 789.541 904.34810 822.7665  911.9975 2967.796   100
-##     apply 868.522 908.336 991.06912 959.4580 1046.0835 1430.456   100
-##  rowMeans  18.177  19.382  25.19812  23.4890   28.1830   48.893   100
+##      expr     min       lq      mean  median       uq      max neval
+##      loop 746.423 766.4940 851.05493 788.150 864.4910 3047.323   100
+##     apply 863.475 883.7845 923.21638 899.168 945.9720 1084.456   100
+##  rowMeans  18.150  19.2530  22.51806  22.703  24.4285   34.650   100
 {% endhighlight %}
 
 
@@ -238,9 +241,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##        expr      min       lq      mean   median        uq      max
-##        loop 4063.629 4115.389 4357.0669 4166.727 4475.9510 6022.188
-##  vectorized  105.175  106.424  111.3449  112.348  114.2605  127.837
+##        expr      min       lq      mean   median       uq      max
+##        loop 3991.204 4023.503 4198.8841 4053.097 4149.492 5594.456
+##  vectorized  105.098  106.666  110.4647  111.180  113.387  131.265
 ##  neval
 ##    100
 ##    100
@@ -312,9 +315,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##    expr     min       lq     mean   median      uq      max neval
-##  sapply 596.416 619.8300 645.4890 633.7485 674.889  863.241   100
-##  vapply 517.542 535.9395 579.5045 554.3065 592.372 2315.614   100
+##    expr     min       lq     mean  median       uq      max neval
+##  sapply 596.619 621.1735 650.6462 638.453 682.5425  919.996   100
+##  vapply 516.375 540.4710 583.9992 562.221 594.6660 2332.687   100
 {% endhighlight %}
 
 
@@ -344,9 +347,9 @@ compare
 
 {% highlight text %}
 ## Unit: microseconds
-##    expr    min     lq    mean  median      uq    max neval
-##  coerce 11.723 12.522 13.3944 12.6955 12.9875 42.004   100
-##    drop  2.270  2.566  3.1083  2.8665  3.0420 25.674   100
+##    expr    min     lq     mean  median     uq    max neval
+##  coerce 12.001 12.314 14.09449 12.5650 12.913 54.198   100
+##    drop  2.424  2.751  3.08146  3.0085  3.239 11.422   100
 {% endhighlight %}
 
 
@@ -482,153 +485,141 @@ summaryRprof(tmp)
 {% highlight text %}
 ## $by.self
 ##                        self.time self.pct total.time total.pct
-## "[[.data.frame"             0.06     5.56       0.10      9.26
-## "lapply"                    0.04     3.70       1.08    100.00
-## "model.frame.default"       0.04     3.70       0.36     33.33
-## "paste"                     0.04     3.70       0.12     11.11
-## "deparse"                   0.04     3.70       0.10      9.26
-## "diag"                      0.04     3.70       0.08      7.41
-## "match"                     0.04     3.70       0.08      7.41
-## "unique"                    0.04     3.70       0.06      5.56
-## "%*%"                       0.04     3.70       0.04      3.70
-## ".External"                 0.04     3.70       0.04      3.70
-## "var"                       0.04     3.70       0.04      3.70
-## "<Anonymous>"               0.02     1.85       1.08    100.00
-## "eval"                      0.02     1.85       1.08    100.00
-## "update.default"            0.02     1.85       0.44     40.74
-## "predict.lda"               0.02     1.85       0.32     29.63
-## "[.data.frame"              0.02     1.85       0.14     12.96
-## ".getXlevels"               0.02     1.85       0.10      9.26
-## "model.matrix.default"      0.02     1.85       0.10      9.26
-## "is.data.frame"             0.02     1.85       0.08      7.41
-## ".deparseOpts"              0.02     1.85       0.06      5.56
-## "na.omit"                   0.02     1.85       0.06      5.56
-## "scale"                     0.02     1.85       0.04      3.70
-## "$"                         0.02     1.85       0.02      1.85
-## "all"                       0.02     1.85       0.02      1.85
-## "anyDuplicated"             0.02     1.85       0.02      1.85
-## "apply"                     0.02     1.85       0.02      1.85
-## "as.character"              0.02     1.85       0.02      1.85
-## "as.vector"                 0.02     1.85       0.02      1.85
-## ".checkMFClasses"           0.02     1.85       0.02      1.85
-## "getCall"                   0.02     1.85       0.02      1.85
-## "is.matrix"                 0.02     1.85       0.02      1.85
-## "length"                    0.02     1.85       0.02      1.85
-## "mean.default"              0.02     1.85       0.02      1.85
-## "names"                     0.02     1.85       0.02      1.85
-## "order"                     0.02     1.85       0.02      1.85
-## "pmatch"                    0.02     1.85       0.02      1.85
-## "rowSums"                   0.02     1.85       0.02      1.85
-## "split"                     0.02     1.85       0.02      1.85
-## "structure"                 0.02     1.85       0.02      1.85
-## "t"                         0.02     1.85       0.02      1.85
-## "unique.default"            0.02     1.85       0.02      1.85
-## "vapply"                    0.02     1.85       0.02      1.85
+## "<Anonymous>"               0.04     4.17       0.96    100.00
+## "model.frame.default"       0.04     4.17       0.30     31.25
+## "[.data.frame"              0.04     4.17       0.12     12.50
+## "na.omit.data.frame"        0.04     4.17       0.12     12.50
+## "%in%"                      0.04     4.17       0.06      6.25
+## "La.svd"                    0.04     4.17       0.06      6.25
+## "unique"                    0.04     4.17       0.06      6.25
+## "aperm"                     0.04     4.17       0.04      4.17
+## "apply"                     0.04     4.17       0.04      4.17
+## "levels"                    0.04     4.17       0.04      4.17
+## "lapply"                    0.02     2.08       0.96    100.00
+## "lda.formula"               0.02     2.08       0.76     79.17
+## "update"                    0.02     2.08       0.32     33.33
+## ".External2"                0.02     2.08       0.20     20.83
+## "model.matrix.default"      0.02     2.08       0.12     12.50
+## "["                         0.02     2.08       0.10     10.42
+## "paste"                     0.02     2.08       0.10     10.42
+## ".deparseOpts"              0.02     2.08       0.06      6.25
+## "sweep"                     0.02     2.08       0.06      6.25
+## "[.factor"                  0.02     2.08       0.04      4.17
+## "match.call"                0.02     2.08       0.04      4.17
+## "rep.factor"                0.02     2.08       0.04      4.17
+## "as.integer"                0.02     2.08       0.02      2.08
+## "as.matrix"                 0.02     2.08       0.02      2.08
+## "c"                         0.02     2.08       0.02      2.08
+## "colnames"                  0.02     2.08       0.02      2.08
+## "colSums"                   0.02     2.08       0.02      2.08
+## "delete.response"           0.02     2.08       0.02      2.08
+## "is.finite"                 0.02     2.08       0.02      2.08
+## "is.ordered"                0.02     2.08       0.02      2.08
+## "lengths"                   0.02     2.08       0.02      2.08
+## "match.fun"                 0.02     2.08       0.02      2.08
+## "mean.default"              0.02     2.08       0.02      2.08
+## "min"                       0.02     2.08       0.02      2.08
+## "mode"                      0.02     2.08       0.02      2.08
+## "NextMethod"                0.02     2.08       0.02      2.08
+## "parent.frame"              0.02     2.08       0.02      2.08
+## "sys.function"              0.02     2.08       0.02      2.08
 ## 
 ## $by.total
 ##                        total.time total.pct self.time self.pct
-## "lapply"                     1.08    100.00      0.04     3.70
-## "<Anonymous>"                1.08    100.00      0.02     1.85
-## "eval"                       1.08    100.00      0.02     1.85
-## "block_exec"                 1.08    100.00      0.00     0.00
-## "call_block"                 1.08    100.00      0.00     0.00
-## "doTryCatch"                 1.08    100.00      0.00     0.00
-## "eval.parent"                1.08    100.00      0.00     0.00
-## "evaluate_call"              1.08    100.00      0.00     0.00
-## "FUN"                        1.08    100.00      0.00     0.00
-## "handle"                     1.08    100.00      0.00     0.00
-## "in_dir"                     1.08    100.00      0.00     0.00
-## "local"                      1.08    100.00      0.00     0.00
-## "process_file"               1.08    100.00      0.00     0.00
-## "process_group"              1.08    100.00      0.00     0.00
-## "process_group.block"        1.08    100.00      0.00     0.00
-## "replicate"                  1.08    100.00      0.00     0.00
-## "sapply"                     1.08    100.00      0.00     0.00
-## "try"                        1.08    100.00      0.00     0.00
-## "tryCatch"                   1.08    100.00      0.00     0.00
-## "tryCatchList"               1.08    100.00      0.00     0.00
-## "tryCatchOne"                1.08    100.00      0.00     0.00
-## "withCallingHandlers"        1.08    100.00      0.00     0.00
-## "withVisible"                1.08    100.00      0.00     0.00
-## "lda"                        0.70     64.81      0.00     0.00
-## "lda.formula"                0.70     64.81      0.00     0.00
-## "update.default"             0.44     40.74      0.02     1.85
-## "update"                     0.44     40.74      0.00     0.00
-## "model.frame.default"        0.36     33.33      0.04     3.70
-## "predict.lda"                0.32     29.63      0.02     1.85
-## "predict"                    0.32     29.63      0.00     0.00
-## "lda.default"                0.24     22.22      0.00     0.00
-## "[.data.frame"               0.14     12.96      0.02     1.85
-## "paste"                      0.12     11.11      0.04     3.70
-## "[[.data.frame"              0.10      9.26      0.06     5.56
-## "deparse"                    0.10      9.26      0.04     3.70
-## ".getXlevels"                0.10      9.26      0.02     1.85
-## "model.matrix.default"       0.10      9.26      0.02     1.85
-## "["                          0.10      9.26      0.00     0.00
-## "[["                         0.10      9.26      0.00     0.00
-## ".External2"                 0.10      9.26      0.00     0.00
-## "model.matrix"               0.10      9.26      0.00     0.00
-## "diag"                       0.08      7.41      0.04     3.70
-## "match"                      0.08      7.41      0.04     3.70
-## "is.data.frame"              0.08      7.41      0.02     1.85
-## "model.frame"                0.08      7.41      0.00     0.00
-## "tapply"                     0.08      7.41      0.00     0.00
-## "unique"                     0.06      5.56      0.04     3.70
-## ".deparseOpts"               0.06      5.56      0.02     1.85
-## "na.omit"                    0.06      5.56      0.02     1.85
-## "simplify2array"             0.06      5.56      0.00     0.00
-## "%*%"                        0.04      3.70      0.04     3.70
-## ".External"                  0.04      3.70      0.04     3.70
-## "var"                        0.04      3.70      0.04     3.70
-## "scale"                      0.04      3.70      0.02     1.85
-## "factor"                     0.04      3.70      0.00     0.00
-## "match.arg"                  0.04      3.70      0.00     0.00
-## "na.omit.data.frame"         0.04      3.70      0.00     0.00
-## "terms"                      0.04      3.70      0.00     0.00
-## "terms.formula"              0.04      3.70      0.00     0.00
-## "$"                          0.02      1.85      0.02     1.85
-## "all"                        0.02      1.85      0.02     1.85
-## "anyDuplicated"              0.02      1.85      0.02     1.85
-## "apply"                      0.02      1.85      0.02     1.85
-## "as.character"               0.02      1.85      0.02     1.85
-## "as.vector"                  0.02      1.85      0.02     1.85
-## ".checkMFClasses"            0.02      1.85      0.02     1.85
-## "getCall"                    0.02      1.85      0.02     1.85
-## "is.matrix"                  0.02      1.85      0.02     1.85
-## "length"                     0.02      1.85      0.02     1.85
-## "mean.default"               0.02      1.85      0.02     1.85
-## "names"                      0.02      1.85      0.02     1.85
-## "order"                      0.02      1.85      0.02     1.85
-## "pmatch"                     0.02      1.85      0.02     1.85
-## "rowSums"                    0.02      1.85      0.02     1.85
-## "split"                      0.02      1.85      0.02     1.85
-## "structure"                  0.02      1.85      0.02     1.85
-## "t"                          0.02      1.85      0.02     1.85
-## "unique.default"             0.02      1.85      0.02     1.85
-## "vapply"                     0.02      1.85      0.02     1.85
-## "aperm"                      0.02      1.85      0.00     0.00
-## "aperm.default"              0.02      1.85      0.00     0.00
-## "as.formula"                 0.02      1.85      0.00     0.00
-## "colnames"                   0.02      1.85      0.00     0.00
-## "formula"                    0.02      1.85      0.00     0.00
-## "formula.default"            0.02      1.85      0.00     0.00
-## "%in%"                       0.02      1.85      0.00     0.00
-## "matrix"                     0.02      1.85      0.00     0.00
-## "max.col"                    0.02      1.85      0.00     0.00
-## "model.response"             0.02      1.85      0.00     0.00
-## "notnull"                    0.02      1.85      0.00     0.00
-## "rep"                        0.02      1.85      0.00     0.00
-## "rep.factor"                 0.02      1.85      0.00     0.00
-## "scale.default"              0.02      1.85      0.00     0.00
-## "sweep"                      0.02      1.85      0.00     0.00
-## "table"                      0.02      1.85      0.00     0.00
-## "update.formula"             0.02      1.85      0.00     0.00
+## "<Anonymous>"                0.96    100.00      0.04     4.17
+## "lapply"                     0.96    100.00      0.02     2.08
+## "block_exec"                 0.96    100.00      0.00     0.00
+## "call_block"                 0.96    100.00      0.00     0.00
+## "doTryCatch"                 0.96    100.00      0.00     0.00
+## "eval"                       0.96    100.00      0.00     0.00
+## "eval.parent"                0.96    100.00      0.00     0.00
+## "evaluate_call"              0.96    100.00      0.00     0.00
+## "FUN"                        0.96    100.00      0.00     0.00
+## "handle"                     0.96    100.00      0.00     0.00
+## "in_dir"                     0.96    100.00      0.00     0.00
+## "local"                      0.96    100.00      0.00     0.00
+## "process_file"               0.96    100.00      0.00     0.00
+## "process_group"              0.96    100.00      0.00     0.00
+## "process_group.block"        0.96    100.00      0.00     0.00
+## "replicate"                  0.96    100.00      0.00     0.00
+## "sapply"                     0.96    100.00      0.00     0.00
+## "try"                        0.96    100.00      0.00     0.00
+## "tryCatch"                   0.96    100.00      0.00     0.00
+## "tryCatchList"               0.96    100.00      0.00     0.00
+## "tryCatchOne"                0.96    100.00      0.00     0.00
+## "withCallingHandlers"        0.96    100.00      0.00     0.00
+## "withVisible"                0.96    100.00      0.00     0.00
+## "lda.formula"                0.76     79.17      0.02     2.08
+## "lda"                        0.76     79.17      0.00     0.00
+## "lda.default"                0.34     35.42      0.00     0.00
+## "update"                     0.32     33.33      0.02     2.08
+## "model.frame.default"        0.30     31.25      0.04     4.17
+## "update.default"             0.30     31.25      0.00     0.00
+## ".External2"                 0.20     20.83      0.02     2.08
+## "predict"                    0.18     18.75      0.00     0.00
+## "predict.lda"                0.18     18.75      0.00     0.00
+## "[.data.frame"               0.12     12.50      0.04     4.17
+## "na.omit.data.frame"         0.12     12.50      0.04     4.17
+## "model.matrix.default"       0.12     12.50      0.02     2.08
+## "model.matrix"               0.12     12.50      0.00     0.00
+## "na.omit"                    0.12     12.50      0.00     0.00
+## "["                          0.10     10.42      0.02     2.08
+## "paste"                      0.10     10.42      0.02     2.08
+## "match"                      0.10     10.42      0.00     0.00
+## "tapply"                     0.10     10.42      0.00     0.00
+## "deparse"                    0.08      8.33      0.00     0.00
+## "diag"                       0.08      8.33      0.00     0.00
+## "svd"                        0.08      8.33      0.00     0.00
+## "%in%"                       0.06      6.25      0.04     4.17
+## "La.svd"                     0.06      6.25      0.04     4.17
+## "unique"                     0.06      6.25      0.04     4.17
+## ".deparseOpts"               0.06      6.25      0.02     2.08
+## "sweep"                      0.06      6.25      0.02     2.08
+## "scale"                      0.06      6.25      0.00     0.00
+## "scale.default"              0.06      6.25      0.00     0.00
+## "simplify2array"             0.06      6.25      0.00     0.00
+## "aperm"                      0.04      4.17      0.04     4.17
+## "apply"                      0.04      4.17      0.04     4.17
+## "levels"                     0.04      4.17      0.04     4.17
+## "[.factor"                   0.04      4.17      0.02     2.08
+## "match.call"                 0.04      4.17      0.02     2.08
+## "rep.factor"                 0.04      4.17      0.02     2.08
+## "[["                         0.04      4.17      0.00     0.00
+## "[[.data.frame"              0.04      4.17      0.00     0.00
+## "rep"                        0.04      4.17      0.00     0.00
+## "as.integer"                 0.02      2.08      0.02     2.08
+## "as.matrix"                  0.02      2.08      0.02     2.08
+## "c"                          0.02      2.08      0.02     2.08
+## "colnames"                   0.02      2.08      0.02     2.08
+## "colSums"                    0.02      2.08      0.02     2.08
+## "delete.response"            0.02      2.08      0.02     2.08
+## "is.finite"                  0.02      2.08      0.02     2.08
+## "is.ordered"                 0.02      2.08      0.02     2.08
+## "lengths"                    0.02      2.08      0.02     2.08
+## "match.fun"                  0.02      2.08      0.02     2.08
+## "mean.default"               0.02      2.08      0.02     2.08
+## "min"                        0.02      2.08      0.02     2.08
+## "mode"                       0.02      2.08      0.02     2.08
+## "NextMethod"                 0.02      2.08      0.02     2.08
+## "parent.frame"               0.02      2.08      0.02     2.08
+## "sys.function"               0.02      2.08      0.02     2.08
+## "as.vector"                  0.02      2.08      0.00     0.00
+## "formals"                    0.02      2.08      0.00     0.00
+## ".getXlevels"                0.02      2.08      0.00     0.00
+## "match.arg"                  0.02      2.08      0.00     0.00
+## "model.frame"                0.02      2.08      0.00     0.00
+## "nlevels"                    0.02      2.08      0.00     0.00
+## "stopifnot"                  0.02      2.08      0.00     0.00
+## "structure"                  0.02      2.08      0.00     0.00
+## "table"                      0.02      2.08      0.00     0.00
+## "vapply"                     0.02      2.08      0.00     0.00
+## "var"                        0.02      2.08      0.00     0.00
 ## 
 ## $sample.interval
 ## [1] 0.02
 ## 
 ## $sampling.time
-## [1] 1.08
+## [1] 0.96
 {% endhighlight %}
 
 There are two main components to this summary:
@@ -648,32 +639,32 @@ proftable(tmp)
 
 {% highlight text %}
 ##  PctTime
-##  3.70   
-##  3.70   
-##  3.70   
-##  3.70   
-##  3.70   
-##  1.85   
-##  1.85   
-##  1.85   
-##  1.85   
-##  1.85   
-##  Call                                                                                                             
-##  lda > lda.formula > lda.default > diag                                                                           
-##  lda > lda.formula > lda.default > diag > var                                                                     
-##  predict > predict.lda > model.frame > model.frame.default > is.data.frame > [ > [.data.frame > [[ > [[.data.frame
-##  update > update.default > lda > lda.formula > model.frame.default > simplify2array > unique                      
-##  update > update.default > lda > lda.formula > model.frame.default > terms > terms.formula > .External            
-##  lda > lda.formula > model.frame.default                                                                          
-##  lda > lda.formula > model.frame.default > .External2 > [.data.frame                                              
-##  lda > lda.formula > model.frame.default > .External2 > [.data.frame > names                                      
-##  lda > lda.formula > model.frame.default > simplify2array > unique > unique.default                               
-##  lda > lda.formula > .getXlevels                                                                                  
+##  4.17   
+##  4.17   
+##  4.17   
+##  4.17   
+##  2.08   
+##  2.08   
+##  2.08   
+##  2.08   
+##  2.08   
+##  2.08   
+##  Call                                                                                                    
+##  lda > lda.formula > model.frame.default > .External2 > na.omit > na.omit.data.frame                     
+##  predict > predict.lda > apply                                                                           
+##  predict > predict.lda > scale > scale.default > sweep > aperm                                           
+##  update > update.default > lda > lda.formula > lda.default > svd > La.svd                                
+##  lda > lda.formula                                                                                       
+##  lda > lda.formula > model.frame.default                                                                 
+##  lda > lda.formula > model.frame.default > .External2 > [.data.frame > [                                 
+##  lda > lda.formula > model.frame.default > .External2 > [.data.frame > [ > [.factor                      
+##  lda > lda.formula > model.frame.default > .External2 > na.omit > na.omit.data.frame > [ > [.data.frame  
+##  lda > lda.formula > model.frame.default > .External2 > na.omit > na.omit.data.frame > [[ > [[.data.frame
 ## 
 ## Parent Call: local > eval.parent > eval > eval > eval > eval > <Anonymous> > process_file > withCallingHandlers > process_group > process_group.block > call_block > block_exec > in_dir > <Anonymous> > evaluate_call > handle > try > tryCatch > tryCatchList > tryCatchOne > doTryCatch > withCallingHandlers > withVisible > eval > eval > replicate > sapply > lapply > FUN > ...
 ## 
-## Total Time: 1.08 seconds
-## Percent of run time represented: 27.8 %
+## Total Time: 0.96 seconds
+## Percent of run time represented: 29.2 %
 {% endhighlight %}
 
 First of all, we can see that the call to ```replicate``` is now relegated to the end and removed from the general summary. Second, we see the chain of calls, which helps us understand what some functions we didn't call directly (e.g. ```.getXlevels``` or ```model.frame.default```) actually do. Finally, it only shows the first few lines, ordered by their percentage of the whole running time, and therefore it is easier to read. For all these reasons, I recommend the use of ```proftable``` over ```summaryRprof```.
@@ -776,14 +767,10 @@ compare
 
 {% highlight text %}
 ## Unit: milliseconds
-##      expr      min       lq     mean   median       uq       max
-##  original 8.473832 8.812164 9.877185 8.930546 9.362137 100.08493
-##  compiled 6.744978 7.000559 7.730266 7.101226 7.385436  38.63367
-##       new 5.966729 6.273953 7.045996 6.367214 6.622774  43.36839
-##  neval
-##   1000
-##   1000
-##   1000
+##      expr      min       lq     mean   median       uq      max neval
+##  original 8.540425 8.810987 9.203373 8.906748 8.999030 95.57505  1000
+##  compiled 6.803040 7.028638 7.291496 7.102944 7.204534 15.12300  1000
+##       new 6.009491 6.229223 6.523165 6.306225 6.393313 90.89608  1000
 {% endhighlight %}
 
 
@@ -811,5 +798,9 @@ In this tutorial, we first discussed why you would want to optimise your code, a
 This is not the end of the discussion. Two main points I didn't discuss are how to incorporate low-level languages (e.g. C, C++, Fortran) in your code, and how to take advantage of multiple cores to do parts of the computations in parallel. These two points are already well covered in some other places, like [here](http://adv-r.had.co.nz/Rcpp.html) and [here](http://blog.yhathq.com/posts/running-r-in-parallel.html). 
 
 Finally, two more options to consider (but a lot more drastic!) are to either [link your version of R to a different, more efficient BLAS (Basic Linear Algebra System)](http://edustatistics.org/nathanvan/2013/07/09/for-faster-r-use-openblas-instead-better-than-atlas-trivial-to-switch-to-on-ubuntu/), or even to go for a faster R implementation (e.g. [pretty quick R](http://www.pqr-project.org/) or [Renjin](http://www.renjin.org/)). However, I haven't tried either option, and therefore I cannot comment on them.
+
+In conclusion, another quote from Donald Knuth (pointed out by Vince Forgetta):
+
+> If you optimize everything, you will always be unhappy. (Donald Knuth)
 
 **Update** (2015-10-15): I've actually switched to the ATLAS system a few weeks ago, and the improvements I got are similar to the results discussed in the link above. For Ubuntu users, I recommend to make the switch, since there doesn't seem to be any downside!

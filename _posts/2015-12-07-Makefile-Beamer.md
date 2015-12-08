@@ -23,10 +23,10 @@ Where the Makefile can become useful is in *automating* the compilation of both 
 
 The setting is going to be as follows: say you have a presentation in a file ```talk.tex```. You also have two separate files for the headers: ```talk_slides.tex``` and ```talk_handout.tex```. The latter looks something like:
 
-``` latex
+{% highlight latex %}
 \documentclass[handout]{beamer}
 \input{talk.tex}
-```
+{% endhighlight %}
 
 ### Makefile 
 
@@ -40,19 +40,19 @@ The point is that, once you have a Makefile in your directory, you simply use th
 
 The syntax of the Makefile is thus as follows:
 
-``` bash
+{% highlight bash %}
 targets: dependencies
   instructions
-```
+{% endhighlight %}
 
 Note that you need a hard tab at the beginning of the instructions, or otherwise you will get a missing operator error (although you can circumvent this [using semi-colons if you want](http://stackoverflow.com/a/14109796/2836971)).
   
 Let's look at one example: one target we are interested in is ```talk_handout.pdf```, the output when compiling ```talk_handout.tex``` with ```pdflatex```. We want to recompile it when either ```talk_handout.tex``` or ```talk.tex``` is changed. Therefore in the Makefile, we would write
 
-``` bash
+{% highlight bash %}
 talk_handout.pdf: talk_handout.tex talk.tex
   pdflatex talk_handout
-```
+{% endhighlight %}
 
 And of course you would have something similar for the target ```talk_slides.pdf```. 
 
@@ -60,16 +60,16 @@ And of course you would have something similar for the target ```talk_slides.pdf
 
 There is two important special targets that I want to discuss: ```all``` and ```.PHONY```. By default, the function ```make``` will build the first target when you call it without an argument, and to build a specific target you would write ```make target```. But what if you want to build multiple targets at the same time? Instead of running separate commands ```make target1```, ```make target2```, etc., you can use the special target ```all```, whose dependencies are all the other targets you would like to build at the same time. For example, with our Beamer presentation, you would have
 
-``` bash
+{% highlight bash %}
 all: talk_handout.pdf talk_slides.pdf
-```
+{% endhighlight %}
 
 Next, ```.PHONY```. When you compile Latex files, you get several auxiliary files which can useful to speed up a future compilation. But sometimes you also want to remove them; the Makefile can also help you automating this. You can create a target ```clean```, with or without dependencies, and with the instructions to remove these auxiliary files:
 
-```bash 
+{% highlight bash %}
 clean: 
   rm *.aux *.blg *.out *.bbl *.log
-```
+{% endhighlight %}
 
 You can then clean your directory by simply calling ```make clean```. 
 
@@ -78,7 +78,7 @@ The issue, though, is that the ```clean``` target is special, in that it doesn't
 
 Therefore, our Makefile for the Beamer presentation is now
 
-```bash
+{% highlight bash %}
 all: talk_handout.pdf talk_slides.pdf
 
 .PHONY: clean
@@ -90,16 +90,15 @@ talk_handout.pdf: talk_handout.tex talk.tex
   
 talk_slides.pdf: talk_slides.tex talk.tex
   pdflatex talk_slides
-```
+{% endhighlight %}
 
 Voila! This is all you need for this project. Save the above script in a file named ```Makefile``` or ```makefile```, and you simply run the command ```make``` to recompile your pdf documents whenever you change something.
-
 
 ### More advanced concepts
 
 The above Makefile is unnecessary long and also repetitive: for example the word ```talk``` appears in multiple places, and if we want to change it (e.g. we want to reuse this Makefile for another presentation), we need to change it everywhere. The solution is simply to create a variable that will hold the name of the presentation. Therefore to reuse the Makefile we only need to change one line:
 
-```bash
+{% highlight bash %}
 FILE = talk
 
 all: $(FILE)_handout.pdf $(FILE)_slides.pdf
@@ -113,11 +112,11 @@ $(FILE)_handout.pdf: $(FILE)_handout.tex $(FILE).tex
   
 $(FILE)_slides.pdf: $(FILE)_slides.tex $(FILE).tex
   pdflatex $(FILE)_slides
-```
+{% endhighlight %}
 
 Moreover, since we are essentially using the same instructions for both ```talk_slides.pdf``` and ```talk_handout.pdf```, it would be nice if we only had to write it once. For this purpose, we can use the special macro ```$@```, which stands for the target name. We can then rewrite our Makefile as
 
-```bash
+{% highlight bash %}
 FILE = talk
 
 all: $(FILE)_handout.pdf $(FILE)_slides.pdf
@@ -128,7 +127,7 @@ clean:
   
 $(FILE)_handout.pdf $(FILE)_slides.pdf: $(FILE)_slides.tex $(FILE)_handout.tex $(FILE).tex
   pdflatex $@
-```
+{% endhighlight %}
 
 So we have two targets on the same line, and only one set of instructions. One possible issue is that now ```talk_slides.tex``` is a dependency for ```talk_handout.pdf``` and vice-versa, and therefore both the slides and the handout will be recompiled whenever there is a change. This is not too problematic, since most changes will be made to ```talk.tex``` which is already a dependency for both the slides and the handout.
 
@@ -147,7 +146,7 @@ Having been through the process of learning about Makefiles, I thought I would t
   
 This single script is as follows:
 
-``` bash
+{% highlight bash %}
 # First argument is the name of the talk
 # other arguments are ignored
 TALK=$1
@@ -175,7 +174,7 @@ clean:
   
 $(FILE)_handout.pdf $(FILE)_slides.pdf: $(FILE)_slides.tex $(FILE)_handout.tex $(FILE).tex
 \tpdflatex $@' > Makefile
-```
+{% endhighlight %}
 
 Note that the functionality of this script is highly dependent on which type of shell you use. But a particular point to keep in mind is that, when creating the Makefile, I'm using both single and double quotes. This is because I want most of the variable names to be interpreted literally, *except the first line*, which will change depending on the name of the presentation. 
 

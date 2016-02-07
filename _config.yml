@@ -5,7 +5,6 @@ redcarpet:
 
 # Permalinks
 permalink:        pretty
-relative_permalinks: true
 
 # Setup
 title:            MTurgeon

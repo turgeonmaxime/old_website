@@ -2,7 +2,7 @@
 layout: post
 title: "Oscar 2016 predictions"
 tags: [Oscar, prediction]
-permalink: oscar-predictions-2016
+permalink: /oscar-predictions-2016
 comments: true
 ---
 

@@ -29,11 +29,11 @@ After the Academy Awards, I will update this post and point out the winners (I w
 
 #### DIRECTING
 
- - Adam McKay, The Big Short (0.06%)
- - George Miller, Mad Max: Fury Road (0.18%)
- - **Alejandro G. Inarritu, The Revenant (99.65%)**
- - Lenny Abrahamson, Room (0.05%)
- - Tom McCarthy, Spotlight (0.07%)
+ - Adam McKay, The Big Short (0.03%)
+ - George Miller, Mad Max: Fury Road (0.09%)
+ - **Alejandro G. Inarritu, The Revenant (99.82%)**
+ - Lenny Abrahamson, Room (0.02%)
+ - Tom McCarthy, Spotlight (0.04%)
 
 #### ACTOR IN A LEADING ROLE
 

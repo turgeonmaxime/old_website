@@ -70,7 +70,7 @@ Best supporting actress is definitely the most difficult acting category to pred
  - Jennifer Jason Leigh, The Hateful Eight
  - Rooney Mara, Carol
  - Rachel McAdams, Spotlight
- - **Alicia Vikander, The Danish Girl**
+ - ***Alicia Vikander, The Danish Girl***
  - Kate Winslet, Steve Jobs
 
 ***
@@ -94,7 +94,7 @@ The weakest nominee of this very strong category is Mad Max; any other film coul
  - Carol
  - The Hateful Eight
  - Mad Max: Fury Road
- - **The Revenant**
+ - ***The Revenant***
  - Sicario
 
 ***
@@ -106,7 +106,7 @@ Period drama are typically favoured in this category, which plays against Mad Ma
  - Carol
  - Cinderella
  - **The Danish Girl**
- - Mad Max: Fury Road
+ - *Mad Max: Fury Road*
  - The Revenant
 
 ***
@@ -128,7 +128,7 @@ This should be an easy win for Amy, which won essentially every precursor award.
 The Big Short is definitely the front-runner here: it's the kind of movie where the editing work is actually quite obvious (unlike Birdman last year, which wasn't even nominated), and it was recently rewarded by the American Cinema Editors.
 
  - **The Big Short**
- - Mad Max: Fury Road
+ - *Mad Max: Fury Road*
  - The Revenant
  - Spotlight
  - Star Wars: The Force Awakens
@@ -151,7 +151,7 @@ Son of Saul has been a favourite on the art-house circuit, it won the Grand Jury
 
 The makeup was great in Mad Max, but DiCaprio's performance in The Revenant relies heavily on convincing makeup and hair(non)styling. In any case, the consensus seems to be that Mad Max should win this award.
 
- - **Mad Max: Fury Road**
+ - ***Mad Max: Fury Road***
  - The 100-Year-Old Man Who Climbed out the Window and Disappeared
  - The Revenant
 
@@ -187,7 +187,7 @@ In a typically CGI-heavy genre, Mad Max's production was a major reason behind t
 
  - Bridge of Spies
  - The Danish Girl
- - **Mad Max: Fury Road**
+ - ***Mad Max: Fury Road***
  - The Martian
  - The Revenant
 
@@ -261,7 +261,7 @@ Mad Max had great visual effects, and its critical success should help it win in
 
 Aaron Sorkin won the Golden Globe for his work on Steve Jobs, but since he wasn't even nominated for an Academy Award, I will go with The Big Short. 
 
- - **The Big Short**
+ - ***The Big Short***
  - Brooklyn
  - Carol
  - The Martian
@@ -274,5 +274,5 @@ This category will be won by either Spotlight or Straight Outta Compton. But giv
  - Bridge of Spies
  - Ex Machina
  - Inside Out
- - **Spotlight**
+ - ***Spotlight***
  - Straight Outta Compton

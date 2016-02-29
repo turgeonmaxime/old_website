@@ -12,6 +12,8 @@ This year, I decided to repeat the experience again, especially since the Best P
 
 After the Academy Awards, I will update this post and point out the winners (I will indicate them in italics). I may also write a post on my prediction model.
 
+**Update (2016/02/28)**: Well, I didn't do as well as I would have liked: 14/24.
+
 <!--more-->
 
 ***
@@ -25,13 +27,13 @@ After the Academy Awards, I will update this post and point out the winners (I w
  - The Martian (4.82%)
  - **The Revenant (44.10%)**
  - Room (1.03%)
- - Spotlight (28.01%)
+ - *Spotlight (28.01%)*
 
 #### DIRECTING
 
  - Adam McKay, The Big Short (0.03%)
  - George Miller, Mad Max: Fury Road (0.09%)
- - **Alejandro G. Inarritu, The Revenant (99.82%)**
+ - ***Alejandro G. Inarritu, The Revenant (99.82%)***
  - Lenny Abrahamson, Room (0.02%)
  - Tom McCarthy, Spotlight (0.04%)
 
@@ -39,14 +41,14 @@ After the Academy Awards, I will update this post and point out the winners (I w
 
  - Bryan Cranston, Trumbo (0.04%)
  - Matt Damon, The Martian (0.09%)
- - **Leonardo DiCaprio, The Revenant (99.80%)**
+ - ***Leonardo DiCaprio, The Revenant (99.80%)***
  - Michael Fassbender, Steve Jobs (0.05%)
  - Eddie Redmayne, The Danish Girl (0.02%)
 
 #### ACTRESS IN A LEADING ROLE
 
  - Cate Blanchett, Carol (2.02%)
- - **Brie Larson, Room (94.27%)**
+ - ***Brie Larson, Room (94.27%)***
  - Jennifer Lawrence, Joy (0.97%)
  - Charlotte Rampling, 45 Years (1.32%)
  - Saoirse Ronan, Brooklyn (1.42%)
@@ -62,7 +64,7 @@ Best supporting actress is definitely the most difficult acting category to pred
  - Christian Bale, The Big Short
  - Tom Hardy, The Revenant
  - Mark Ruffalo, Spotlight
- - Mark Rylance, Bridge of Spies
+ - *Mark Rylance, Bridge of Spies*
  - **Sylvester Stallone, Creed**
 
 #### ACTRESS IN A SUPPORTING ROLE
@@ -115,7 +117,7 @@ Period drama are typically favoured in this category, which plays against Mad Ma
 
 This should be an easy win for Amy, which won essentially every precursor award.
 
- - **Amy**
+ - ***Amy***
  - Cartel Land
  - The Look of Silence
  - What Happened, Miss Simone?
@@ -141,7 +143,7 @@ Son of Saul has been a favourite on the art-house circuit, it won the Grand Jury
 
  - Embrace of the Serpent
  - Mustang
- - **Son of Saul**
+ - ***Son of Saul***
  - Theeb
  - A War
 
@@ -163,7 +165,7 @@ Ennio Morricone is a living legend when it comes to film music, and his score fo
 
  - Bridge of Spies
  - Carol
- - **The Hateful Eight**
+ - ***The Hateful Eight***
  - Sicario
  - Star Wars: The Force Awakens
 
@@ -177,7 +179,7 @@ Ennio Morricone is a living legend when it comes to film music, and his score fo
  - “Manta Ray”, Racing Extinction
  - “Simple Song #3”, Youth
  - **“Til It Happens To You”, The Hunting Ground**
- - “Writing’s On The Wall”, Spectre
+ - *“Writing’s On The Wall”, Spectre*
 
 ***
 
@@ -211,14 +213,14 @@ Sanjay's Super Team in the animated category, and Ave Maria in the live action c
  - Day One
  - Everything Will Be Okay (Alles Wird Gut)
  - Shok
- - Stutterer
+ - *Stutterer*
 
 #### DOCUMENTARY (SHORT SUBJECT)
 
  - Body Team 12 
  - Chau, beyond the Lines
  - Claude Lanzmann: Spectres of the Shoah
- - A Girl in the River: The Price of Forgiveness
+ - *A Girl in the River: The Price of Forgiveness*
  - **Last Day of Freedom**
 
 ***

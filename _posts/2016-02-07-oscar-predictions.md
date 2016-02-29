@@ -81,7 +81,7 @@ Inside Out is strongly favoured to win: both a critical and commercial success, 
 
  - Anomalisa
  - Boy and the World
- - **Inside Out**
+ - ***Inside Out***
  - Shaun the Sheep Movie
  - When Marnie Was There
 
@@ -199,7 +199,7 @@ Sanjay's Super Team in the animated category, and Ave Maria in the live action c
 
 #### SHORT FILM (ANIMATED)
 
- - Bear Story
+ - *Bear Story*
  - Prologue
  - **Sanjay’s Super Team**
  - We Can’t Live without Cosmos
@@ -229,7 +229,7 @@ With this in mind, I am positive Mad Max will win for Sound Editing. And since S
 
 #### SOUND EDITING
 
- - **Mad Max: Fury Road**
+ - ***Mad Max: Fury Road***
  - The Martian
  - The Revenant
  - Sicario
@@ -238,7 +238,7 @@ With this in mind, I am positive Mad Max will win for Sound Editing. And since S
 #### SOUND MIXING
 
  - Bridge of Spies
- - Mad Max: Fury Road
+ - *Mad Max: Fury Road*
  - The Martian
  - **The Revenant**
  - Star Wars: The Force Awakens
@@ -249,7 +249,7 @@ With this in mind, I am positive Mad Max will win for Sound Editing. And since S
 
 Mad Max had great visual effects, and its critical success should help it win in this category.
 
- - Ex Machina
+ - *Ex Machina*
  - **Mad Max: Fury Road**
  - The Martian
  - The Revenant

@@ -3,6 +3,7 @@ layout: post
 title: "By how much will Clinton win?"
 permalink: /democratic-primary
 comments: true
+tags: [politics, prediction]
 ---
 
 American politics is great for statistics: there are huge amounts of polls being conducted every week, some positions are up for re-election every other year, and there is really only two parties. Moreover, the complicated nature of the whole election process, which for example involves the electoral college for the presidential election, makes it more interesting than most democracies around the world. It's for all these reasons that an incredible website like [FiveThirtyEight](http://fivethirtyeight.com/) is possible.

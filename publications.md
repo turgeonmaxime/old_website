@@ -14,4 +14,4 @@ title: Publications
 
 ### Master's thesis
 
- - *A relative fundamental lemma for U(4)*, written under the supervision of [Dr. Jayce R. Getz](https://services.math.duke.edu/~jgetz/). A pdf version is available [here](pdfs/thesis.pdf).
+ - *A relative fundamental lemma for U(4)*, written under the supervision of [Dr. Jayce R. Getz](https://services.math.duke.edu/~jgetz/). A pdf version is available [here](/pdfs/thesis.pdf).

@@ -11,3 +11,7 @@ title: Publications
 
 ### Submitted Journal Publications
  - **Turgeon, M.**, Oualkacha, K., Ciampi, A., Dehghan, G., Zanke, B.W., Benedet, A.L., Rosa-Neto, P., Greenwood, C.M.T., Labbe, A., for the Alzheimer's Disease Neuroimaging Initiative. "Principal component of explained variance: an efficient and optimal data dimension reduction framework for association studies". *Submitted.* A preprint is available on [bioRxiv](http://biorxiv.org/content/early/2016/01/13/036566).
+
+### Master's thesis
+
+ - *A relative fundamental lemma for U(4)*, written under the supervision of [Dr. Jayce R. Getz](https://services.math.duke.edu/~jgetz/). A pdf version is available [here](pdfs/thesis.pdf).

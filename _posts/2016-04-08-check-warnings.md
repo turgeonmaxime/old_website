@@ -14,6 +14,8 @@ The main reference for how to make R packages is [*Writing R extensions*](https:
 
 In what follows, I don't want to go over how to make an R package; the above references do a better job than I could hope to do. Rather, I want to share my experience about some of the most annoying part of making an R package: passing the ```R CMD check```. Removing the errors is the most important part, and what kind of errors you get really depends on the package (the log file is typically quite useful in figuring out what triggered the errors). On the other hand, you also want to minimize the number of warnings and notes, and most warnings you probably want to remove altogether. 
 
+<!--more-->
+
 ### Distribution options
 
 The first thing to do, perhaps even before starting to make the R package, is to decide how your package will be distributed. The simplest package you can make is probably one which *packages* all the functions you typically use in your daily life as a statistician. You don't necessarily need to share this package with anyone, so for example you may not care as much about good documentation. At the other extreme, if you plan on making a package that will be used by a large community and that is expected to interact with a large number of packages, you should first familiarize yourself with the rules governing the development of such packages ([Bioconductor](http://www.bioconductor.org/) is an example of such a package repository). 

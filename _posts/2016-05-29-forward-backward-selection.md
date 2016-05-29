@@ -17,7 +17,7 @@ For the sake of clarity, let's focus on a simple linear regression model with \\
 
 $$ E(Y \mid X_1, \ldots, X_p) = \beta_0 + \beta_1 X_1 + \ldots + \beta_p X_p.$$
 
-As the analyst, we were given these \\( p \\) variables to analyse, but we don't necessarily know which ones are relevant in this model. Subset selection methods look at all possible \\( 2^p - 1 \\) models you can get from selecting a subset of these $p$ variables and tries to find the most relevant model for the analysis. Graphically, we can arrange all these models in a [lattice](https://en.wikipedia.org/wiki/Lattice_(order)#Examples): the null model (containing only the intercept term \\( \beta_0 \\)) is at the bottom, the full model (containing all \\( p \\) variables) is at the top, and two nodes corresponding to two models are connected if they have all but one variable in common. For example, the following models are connected:
+As the analyst, we were given these \\( p \\) variables to analyse, but we don't necessarily know which ones are relevant in this model. Subset selection methods look at all possible \\( 2^p - 1 \\) models you can get from selecting a subset of these \\( p \\) variables and tries to find the most relevant model for the analysis. Graphically, we can arrange all these models in a [lattice](https://en.wikipedia.org/wiki/Lattice_(order)#Examples): the null model (containing only the intercept term \\( \beta_0 \\)) is at the bottom, the full model (containing all \\( p \\) variables) is at the top, and two nodes corresponding to two models are connected if they have all but one variable in common. For example, the following models are connected:
 
 $$E(Y \mid X_1) = \beta_0 + \beta_1 X_1, \qquad E(Y \mid X_1, X_2) = \beta_0 + \beta_1 X_1 + \beta_2 X_2;$$
 

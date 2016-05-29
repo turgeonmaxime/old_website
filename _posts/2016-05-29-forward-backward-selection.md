@@ -2,7 +2,7 @@
 title: "The Instability of Forward and Backward Selection"
 author: "Maxime Turgeon"
 tags: [Variable selection, subset selection, R]
-permalink: forward-backward-selection
+permalink: /forward-backward-selection
 comments: true
 ---
 

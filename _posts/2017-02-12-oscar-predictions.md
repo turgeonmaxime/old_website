@@ -116,15 +116,15 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
   - 4.1 Miles
   - Extremis
-  - Joe’s Violin
+  - **Joe’s Violin**
   - Watani: My Homeland
-  - **The White Helmets**
+  - The White Helmets
 
 #### Best Live Action Short Film
 
-  - **Ennemis Interieurs**
+  - Ennemis Interieurs
   - La Femme et le TGV
-  - Silent Nights
+  - **Silent Nights**
   - Sing
   - Timecode
 
@@ -133,16 +133,16 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Blind Vaysha
   - Borrowed Time
   - Pear Cider and Cigarettes
-  - Pearl
-  - **Piper**
+  - **Pearl**
+  - Piper
 
 #### Best Foreign Language Film
 
   - A Man Called Ove
   - Land of Mine
   - Tanna
-  - The Salesman
-  - **Toni Erdmann**
+  - **The Salesman**
+  - Toni Erdmann
 
 #### Film Editing
 

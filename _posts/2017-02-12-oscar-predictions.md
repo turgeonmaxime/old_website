@@ -10,7 +10,7 @@ For the past few years, I have tried to predict the winners in all categories at
 
 As for the last two years, I stick to what the model tells me for my prediction in these categories. However, I'm skeptical about the predictions I have for the acting categories. First, for best actor, Denzel Washington and Casey Affleck are the only two front-runners--there is no way Ryan Gosling will win this award. Second, for best actress, although I would argue that Emma Stone is now the favourite, Isabelle Huppert definitely has a chance too. Therefore, I expect to miss one of these categories.
 
-Finally, this year is definitely *La La Land*'s show: 14 nominations, tied with [*Titanic*](http://www.imdb.com/title/tt0120338/) and [*All About Eve*](http://www.imdb.com/title/tt0042192/) for the most ever. I don't think it will set a new record (which is 11 wins), but I expect them to win around 10 awards (even though I actually selected them for 12 awards below). In particular, I expect them to run the tables in the sound/music categories--which, oddly enough, would be a first for a musical. I think the only one of these four awards they could miss is Best Sound Editing, in which case it should probably go to *Arrival*.
+Finally, this year is definitely *La La Land*'s show: 14 nominations, tied with [*Titanic*](http://www.imdb.com/title/tt0120338/) and [*All About Eve*](http://www.imdb.com/title/tt0042192/) for the most ever. I don't think it will set a new record (which is 11 wins), but I expect them to win around 10 awards. I don't expect them to run the tables in the sound/music categories--which would be a first for a musical. I think the only one of these four awards they could miss is Best Sound Editing, which I predict will probably go to *Arrival*.
 
 My predictions are below, in bold. After the Academy Awards, I will update this post and point out the winners--I will indicate them in italics.
 
@@ -122,9 +122,9 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
 #### Best Live Action Short Film
 
-  - Ennemis Interieurs
+  - **Ennemis Interieurs**
   - La Femme et le TGV
-  - **Silent Nights**
+  - Silent Nights
   - Sing
   - Timecode
 
@@ -133,8 +133,8 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Blind Vaysha
   - Borrowed Time
   - Pear Cider and Cigarettes
-  - **Pearl**
-  - Piper
+  - Pearl
+  - **Piper**
 
 #### Best Foreign Language Film
 
@@ -154,10 +154,10 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
 #### Sound Editing
 
-  - Arrival
+  - **Arrival**
   - Deep Water Horizon
   - Hacksaw Ridge
-  - **La La Land**
+  - La La Land
   - Sully
 
 #### Sound Mixing
@@ -204,8 +204,8 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Allied
   - Fantastic Beasts and Where to Find Them
   - Florence Foster Jenkins
-  - Jackie
-  - **La La Land**
+  - **Jackie**
+  - La La Land
 
 #### Visual ffects
 

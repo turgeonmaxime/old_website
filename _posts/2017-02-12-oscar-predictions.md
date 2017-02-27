@@ -14,6 +14,8 @@ Finally, this year is definitely *La La Land*'s show: 14 nominations, tied with 
 
 My predictions are below, in bold. After the Academy Awards, I will update this post and point out the winners--I will indicate them in italics.
 
+**Update (2017/02/27)**: Wow! What a [finale](https://youtu.be/rvK-g1rehpU)! As for my predictions, I did better than last year: 16/24.
+
 <!--more-->
 
 ***
@@ -28,11 +30,11 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - **La La Land (43%)**
   - Lion (< 1%)
   - Manchester by the Sea (2%)
-  - Moonlight (38%)
+  - *Moonlight (38%)*
 
 #### Best Director
 
-  - **Damien Chazelle, "La La Land" (98%)**
+  - ***Damien Chazelle, "La La Land" (98%)***
   - Mel Gibson, "Hacksaw Ridge" (1%)
   - Barry Jenkins, "Moonlight" (< 1%)
   - Kenneth Lonergan, "Manchester by the Sea" (< 1%)
@@ -40,7 +42,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
 #### Best Actor in a Leading Role
 
-  - **Casey Affleck, “Manchester by the Sea” (51%)**
+  - ***Casey Affleck, “Manchester by the Sea” (51%)***
   - Andrew Garfield, “Hacksaw Ridge” (3%)
   - Ryan Gosling, “La La Land,” (38%)
   - Viggo Mortensen, “Captain Fantastic” (3%)
@@ -51,14 +53,14 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Isabelle Huppert, “Elle” (3%)
   - Ruth Negga, “Loving” (< 1%)
   - Natalie Portman, “Jackie” (< 1%)
-  - **Emma Stone, “La La Land” (95%)**
+  - ***Emma Stone, “La La Land” (95%)***
   - Meryl Streep, “Florence Foster Jenkins” (< 1%)
 
 ***
 
 #### Best Actor in a Supporting Role
 
-  - **Mahershala Ali, “Moonlight”**
+  - ***Mahershala Ali, “Moonlight”***
   - Jeff Bridges, “Hell or High Water”
   - Lucas Hedges, “Manchester by the Sea”
   - Dev Patel, “Lion”
@@ -66,7 +68,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
 #### Best Actress in a Supporting Role
 
-  - **Viola Davis, “Fences”**
+  - ***Viola Davis, “Fences”***
   - Naomie Harris, “Moonlight”
   - Nicole Kidman, “Lion”
   - Octavia Spencer, “Hidden Figures”
@@ -78,7 +80,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Fences
   - Hidden Figures
   - Lion
-  - **Moonlight**
+  - ***Moonlight***
 
 #### Original Screenplay
 
@@ -86,12 +88,12 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Hell or High Water
   - **La La Land**
   - The Lobster
-  - Manchester by the Sea
+  - *Manchester by the Sea*
 
 #### Cinematography
 
   - Arrival
-  - **La La Land**
+  - ***La La Land***
   - Lion
   - Moonlight
   - Silence
@@ -102,7 +104,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Fire at Sea
   - I Am Not Your Negro
   - Life, Animated
-  - **O.J.: Made in America**
+  - ***O.J.: Made in America***
 
 #### Best Animated Feature
 
@@ -110,7 +112,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Moana
   - My Life as a Zucchini
   - The Red Turtle
-  - **Zootopia**
+  - ***Zootopia***
 
 #### Best Documentary Short Subject
 
@@ -118,14 +120,14 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Extremis
   - **Joe’s Violin**
   - Watani: My Homeland
-  - The White Helmets
+  - *The White Helmets*
 
 #### Best Live Action Short Film
 
   - **Ennemis Interieurs**
   - La Femme et le TGV
   - Silent Nights
-  - Sing
+  - *Sing*
   - Timecode
 
 #### Best Animated Short Film
@@ -134,27 +136,27 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Borrowed Time
   - Pear Cider and Cigarettes
   - Pearl
-  - **Piper**
+  - ***Piper***
 
 #### Best Foreign Language Film
 
   - A Man Called Ove
   - Land of Mine
   - Tanna
-  - **The Salesman**
+  - ***The Salesman***
   - Toni Erdmann
 
 #### Film Editing
 
   - Arrival
   - Hacksaw Ridge
-  - Hell or High Water
+  - *Hell or High Water*
   - **La La Land**
   - Moonlight
 
 #### Sound Editing
 
-  - **Arrival**
+  - ***Arrival***
   - Deep Water Horizon
   - Hacksaw Ridge
   - La La Land
@@ -163,7 +165,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 #### Sound Mixing
 
   - Arrival
-  - Hacksaw Ridge
+  - *Hacksaw Ridge*
   - **La La Land**
   - Rogue One: A Star Wars Story
   - 13 Hours: The Secret Soldiers of Benghazi
@@ -173,13 +175,13 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
   - Arrival
   - Fantastic Beasts and Where to Find Them
   - Hail, Caesar!
-  - **La La Land**
+  - ***La La Land***
   - Passengers
 
 #### Music -- Original score
 
   - Jackie
-  - **La La Land**
+  - ***La La Land***
   - Lion
   - Moonlight
   - Passengers
@@ -188,7 +190,7 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
   - "Audition (The Fools Who Dream)”, La La Land
   - "Can’t Stop the Feeling”, Trolls
-  - **"City of Stars”, La La Land**
+  - ***"City of Stars”, La La Land***
   - "The Empty Chair”, Jim: The James Foley Story”
   - "How Far I’ll Go”, Moana
 
@@ -197,12 +199,12 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
   - A Man Called Ove
   - **Star Trek Beyond**
-  - Suicide Squad
+  - *Suicide Squad*
 
 #### Costume Design
 
   - Allied
-  - Fantastic Beasts and Where to Find Them
+  - *Fantastic Beasts and Where to Find Them*
   - Florence Foster Jenkins
   - **Jackie**
   - La La Land
@@ -211,6 +213,6 @@ My predictions are below, in bold. After the Academy Awards, I will update this 
 
   - Deepwater Horizon
   - Doctor Strange
-  - **The Jungle Book**
+  - ***The Jungle Book***
   - Kubo and the Two Strings
   - Rogue One: A Star Wars Story

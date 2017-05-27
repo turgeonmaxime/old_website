@@ -31,6 +31,10 @@ comments: no
 
 ### 2015
 
+  - Montreal Genomics Monthly Meeting
+    + Principal Component of Explained Variance: An Efficient and Optimal Data Dimension Reduction Framework for Association Studies 
+    + [Slides]({{ site.github.url }}/slides/MGM2015-pcev.pdf)
+
   - Annual Human and Statistical Genetics Meeting, Vancouver BC
     + Efficient dimension-reduction technique for the joint analysis of correlated phenotypes
     + [Slides]({{ site.github.url }}/slides/AHSG2015-pcev.pdf)

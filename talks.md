@@ -17,11 +17,6 @@ comments: no
     + A Novel Approach To Competing-Risk Analysis Using Case-Base Sampling
     + Slides
 
-  - Research Day, Department of Epidemiology, Biostatistics and Occupational Health, McGill University
-    + A novel approach to competing risks analysis using case-base sampling
-    + Winner of the Dr. Jim Hanley Research Day Award for Best Presentation in Biostatistics
-    + [Slides](/slides/RD2016-casebase.pdf)
-
 ### 2016
 
   - Annual Meeting of the Statistical Society of Canada, St. Catherines ON

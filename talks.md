@@ -11,11 +11,11 @@ comments: no
   - Annual Meeting of the Statistical Society of Canada, Winnipeg MB
     + Reduced-Rank Singular Value Decomposition for Dimension Reduction with High-Dimensional Data
     + [Abstract](https://ssc.ca/en/meeting/annual/2017/presentation/reduced-rank-singular-value-decomposition-dimension-reduction-high)
-    + Slides
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-SSC2017-handout.pdf)
 
   - Fifth Annual Canadian Statistics Student Conference, Winnipeg MB
     + A Novel Approach To Competing-Risk Analysis Using Case-Base Sampling
-    + Slides
+    + [Slides]({{site.github.url }}/slides/MTurgeon-2017-Student-Conference.pdf)
 
 ### 2016
 

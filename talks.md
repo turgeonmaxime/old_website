@@ -10,6 +10,7 @@ comments: no
 
   - Annual Meeting of the Statistical Society of Canada, Winnipeg MB
     + Reduced-Rank Singular Value Decomposition for Dimension Reduction with High-Dimensional Data
+    + Winner of the *2017 Student Research Presentation Award*
     + [Abstract](https://ssc.ca/en/meeting/annual/2017/presentation/reduced-rank-singular-value-decomposition-dimension-reduction-high)
     + [Slides]({{ site.github.url }}/slides/MTurgeon-SSC2017-handout.pdf)
 
@@ -26,7 +27,7 @@ comments: no
 
   - Research Day, Department of Epidemiology, Biostatistics and Occupational Health, McGill University
     + A novel approach to competing risks analysis using case-base sampling
-    + Winner of the Dr. Jim Hanley Research Day Award for Best Presentation in Biostatistics
+    + Winner of the *Dr. Jim Hanley Research Day Award for Best Presentation in Biostatistics*
     + [Slides]({{ site.github.url }}/slides/RD2016-casebase.pdf)
 
 ### 2015

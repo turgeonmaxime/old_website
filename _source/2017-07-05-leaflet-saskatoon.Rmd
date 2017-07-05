@@ -4,6 +4,11 @@ author: "Maxime Turgeon"
 tags: [Leaflet, Saskatoon, R]
 permalink: leaflet-saskatoon
 comments: true
+maps: true
+output: 
+    html_document:
+        self_contained: no
+        keep_md: true
 ---
 
 I should probably be working on my thesis, but instead I started reading through the introduction to the R package [`leaflet`](https://rstudio.github.io/leaflet/). And the following made me feel excited: 
@@ -41,7 +46,7 @@ stoon %>%
             direction = "auto"))
 ```
 
-Thanks to [Code for America][http://codeforamerica.org] for sharing the GeoJSON on their [Github page](https://github.com/codeforamerica/click_that_hood). They also have the data for Montreal:
+Thanks to [Code for America](http://codeforamerica.org) for sharing the GeoJSON on their [Github page](https://github.com/codeforamerica/click_that_hood). They also have the data for Montreal:
 
 ```{r}
 montreal <- geojsonio::geojson_read("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/montreal.geojson",

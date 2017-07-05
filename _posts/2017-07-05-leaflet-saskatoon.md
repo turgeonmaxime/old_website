@@ -1,0 +1,90 @@
+---
+title: "First steps with Leaflet"
+author: "Maxime Turgeon"
+tags: [Leaflet, Saskatoon, R]
+permalink: leaflet-saskatoon
+comments: true
+---
+
+I should probably be working on my thesis, but instead I started reading through the introduction to the R package [`leaflet`](https://rstudio.github.io/leaflet/). And the following made me feel excited: 
+
+
+{% highlight r %}
+library(leaflet)
+library(magrittr)
+
+stoon <- geojsonio::geojson_read("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/saskatoon.geojson",
+                        what = "sp") 
+labels <- sprintf("<strong>%s</strong>",
+                  stoon$name) %>% 
+    lapply(htmltools::HTML)
+
+stoon %>%
+    leaflet %>%
+    addTiles %>%
+    addPolygons(
+        fillColor = 'blue',
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        fillOpacity = 0.7,
+        highlight = highlightOptions(
+            weight = 5,
+            color = "#666",
+            dashArray = "",
+            fillOpacity = 0.7,
+            bringToFront = TRUE),
+        label = labels,
+        labelOptions = labelOptions(
+            style = list("font-weight" = "normal", padding = "3px 8px"),
+            textsize = "15px",
+            direction = "auto"))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in loadNamespace(name): there is no package called 'webshot'
+{% endhighlight %}
+
+Thanks to [Code for America][http://codeforamerica.org] for sharing the GeoJSON on their [Github page](https://github.com/codeforamerica/click_that_hood). They also have the data for Montreal:
+
+
+{% highlight r %}
+montreal <- geojsonio::geojson_read("https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/montreal.geojson",
+                        what = "sp") 
+labels <- sprintf("<strong>%s</strong>",
+                  montreal$name) %>% 
+    lapply(htmltools::HTML)
+
+montreal %>%
+    leaflet %>%
+    addTiles %>%
+    addPolygons(
+        fillColor = 'blue',
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        fillOpacity = 0.7,
+        highlight = highlightOptions(
+            weight = 5,
+            color = "#666",
+            dashArray = "",
+            fillOpacity = 0.7,
+            bringToFront = TRUE),
+        label = labels,
+        labelOptions = labelOptions(
+            style = list("font-weight" = "normal", padding = "3px 8px"),
+            textsize = "15px",
+            direction = "auto"))
+{% endhighlight %}
+
+
+
+{% highlight text %}
+## Error in loadNamespace(name): there is no package called 'webshot'
+{% endhighlight %}
+
+The next step would be to colour-code the neighbourhoods according to interesting data!

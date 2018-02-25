@@ -13,7 +13,7 @@ A few years ago, as part of the graduate course *Data Analysis and Report Writin
 
 <!--more-->
 
-Over the years, I've continued using the model, but I've also tweaked it a bit. In this post, I want to describe my model and present the predictions for this year (see also ({{ site-url}}/oscar-predictions-2018)). 
+Over the years, I've continued using the model, but I've also tweaked it a bit. In this post, I want to describe my model and present the predictions for this year (see also ({{ site.github.url }}/oscar-predictions-2018)). 
 
 ## Conditional logistic regression
 
@@ -25,12 +25,12 @@ The modeling method I've selected is *conditional logistic regression*. I will g
   
 ### A little bit of probability calculus
 
-Let $Y_1,\ldots,Y_K$ be the winning indicator for each nominee in a given category on a given year. If we assume that only one candidate can win, i.e. if we condition on $\sum Y_j = 1$, the probability that the $i$-th nominee wins is
-$$ P(Y_i = 1 \mid \sum Y_j = 1) = \frac{P(Y_i = 1)}{\sum P(Y_j = 1)}. $$
+Let \\( Y_1,\\ldots,Y_K \\) be the winning indicator for each nominee in a given category on a given year. If we assume that only one candidate can win, i.e. if we condition on \\( \\sum Y_j = 1 \\), the probability that the i-th nominee wins is
+\\[ P(Y_i = 1 \\mid \\sum Y_j = 1) = \\frac{P(Y_i = 1)}{\\sum P(Y_j = 1)}. \\]
 If we model the (unconditional) probabilities using a log link and a linear predictor, we get
-$$ P(Y_i = 1 \mid \sum Y_j = 1) = \frac{\exp(\beta X_i)}{\sum \exp(\beta X_j)}. $$
+\\[ P(Y_i = 1 \\mid \\sum Y_j = 1) = \\frac{\\exp(\\beta X_i)}{\\sum \\exp(\\beta X_j)}. \\]
 We then get the likelihood by multiplying these individual contributions over nominees and over strata (i.e. individual ceremonies). From these two equations, we can derive the three properties above: first, we clearly have
-$$ \sum P(Y_i = 1 \mid \sum Y_j = 1) = 1. $$
+\\[ \\sum P(Y_i = 1 \\mid \\sum Y_j = 1) = 1. \\]
 Second, if all nominees have the same value for a given predictor, then we can factor it from the numerator and the denominator, and hence cancel it out. Finally, the intercept is one such predictor that is common to all nominees, and so it cancels out. In particular, the intercept could be different for each stratum--it is actually non-identifiable, so we can't test if that is indeed the case.
 
 ## Choosing the predictors

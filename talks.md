@@ -6,6 +6,13 @@ comments: no
 
 ## Talks
 
+### 2018
+
+  - Annual Meeting of the Statistical Society of Canada, Montreal QC
+    + Nonlinear Dimension Reduction to Improve Predictive Accuracy in Genomic and Neuroimaging Studies
+    + [Abstract](https://ssc.ca/en/meeting/annual/presentation/nonlinear-dimension-reduction-improve-predictive-accuracy-genomic-and)
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-SSC2018-handout.pdf)
+
 ### 2017
 
   - Annual Meeting of the Statistical Society of Canada, Winnipeg MB

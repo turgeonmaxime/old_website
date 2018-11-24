@@ -13,7 +13,7 @@ title: Publications
 
 ### Submitted Journal Publications
 
-  1. **Turgeon, M.**, Grinek, S., Greenwood, C.M.T., Labbe, A. "An empirical estimate for assessing significance when testing for association between two large multivariate datasets". 
+  1. **Turgeon, M.**, Greenwood, C.M.T., Labbe, A. "A Tracy-Widom Empirical Estimator For Valid P-values With High-Dimensional Datasets". A preprint is available on [arxiv.org](https://arxiv.org/abs/1811.07356).
  
 
 ### Master's thesis

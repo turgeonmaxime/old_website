@@ -8,6 +8,10 @@ comments: no
 
 ### 2018
 
+  - Joint Special Seminar, Departments of Statistics and Computer Science, University of Manitoba, Winnipeg MB
+    + Principal Component of Explained Variance: High-Dimensional Estimation and Inference
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-UManitoba_2018-11-21_handout.pdf)
+
   - Annual Meeting of the Statistical Society of Canada, Montreal QC
     + Nonlinear Dimension Reduction to Improve Predictive Accuracy in Genomic and Neuroimaging Studies
     + [Abstract](https://ssc.ca/en/meeting/annual/presentation/nonlinear-dimension-reduction-improve-predictive-accuracy-genomic-and)

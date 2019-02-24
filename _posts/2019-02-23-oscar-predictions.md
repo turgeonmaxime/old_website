@@ -12,9 +12,9 @@ According to most pundits, the Best Picture race is wide open. But as you'll see
 
 ![Winning probabilities]({{ site.github.url }}/figure/posts/oscar2019_bestPic.png "Winning probabilities over time")
 
-As we can see, my model does not weight all guild awards the same way: a win at the Producers' Guild Awards (PGA) is worth a lot less than a win at the Directors' Guild Awards (DGA) or at the Bafta. Still, given the preferential ballot system used by the academy, my model is probably underestimating the chances of a movie with broad-appeal like Green Book.
+As we can see, my model does not weight all guild awards the same way: a win at the Producers' Guild Awards (PGA) is worth a lot less than a win at the Directors' Guild Awards (DGA) or at the Bafta. Still, given the preferential ballot system used by the academy, my model is probably underestimating the chances of a movie with broad appeal like Green Book.
 
-My predictions are below, in bold. After the Academy Awards next weekend, I will update this post and point out the winners--I will indicate them in italics.
+My predictions are below, in bold. After the Academy Awards tomorrow, I will update this post and point out the winners--I will indicate them in italics.
 
 <!--more-->
 

@@ -16,6 +16,8 @@ As we can see, my model does not weight all guild awards the same way: a win at 
 
 My predictions are below, in bold. After the Academy Awards tomorrow, I will update this post and point out the winners--I will indicate them in italics.
 
+*Update (2019/02/25)*: I got 16 out of 24 right. This year really convinced me that my model for Best Picture is missing something about the broad appeal movies like Spotlight, The Shape of Water, and Green Book, and so it may be time to update it... Stay tuned!
+
 <!--more-->
 
 ***
@@ -26,7 +28,7 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - BLACKKKLANSMAN (5%)
   - BOHEMIAN RHAPSODY (1%)
   - THE FAVOURITE (13%)
-  - GREEN BOOK (2%)
+  - *GREEN BOOK (2%)*
   - **ROMA** (62%)
   - A STAR IS BORN (1%)
   - VICE (8%)
@@ -36,14 +38,14 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - CHRISTIAN BALE, "Vice" (1%)
   - BRADLEY COOPER, "A Star Is Born" (1%)
   - WILLEM DAFOE, "At Eternity's Gate" (0%)
-  - **RAMI MALEK, "Bohemian Rhapsody"** (98%)
+  - ***RAMI MALEK, "Bohemian Rhapsody"** (98%)*
   - VIGGO MORTENSEN, "Green Book" (0%)
   
 #### ACTRESS IN A LEADING ROLE*
 
   - YALITZA APARICIO, "Roma" (0%)
   - **GLENN CLOSE, "The Wife"** (100%)
-  - OLIVIA COLMAN, "The Favourite" (0%)
+  - *OLIVIA COLMAN, "The Favourite" (0%)*
   - LADY GAGA, "A Star Is Born" (0%)
   - MELISSA MCCARTHY, "Can You Ever Forgive Me?" (0%)
 
@@ -52,14 +54,14 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - BLACKKKLANSMAN, Spike Lee (1%)
   - COLD WAR, Paweł Pawlikowski (0%)
   - THE FAVOURITE, Yorgos Lanthimos (2%)
-  - **ROMA, Alfonso Cuarón** (96%)
+  - ***ROMA, Alfonso Cuarón** (96%)*
   - VICE, Adam McKay (1%)
 
 ***
 
 #### ACTOR IN A SUPPORTING ROLE
 
-  - **MAHERSHALA ALI, "Green Book"**
+  - ***MAHERSHALA ALI, "Green Book"***
   - ADAM DRIVER, "BlacKkKlansman"
   - SAM ELLIOTT, "A Star Is Born"
   - RICHARD E. GRANT, "Can You Ever Forgive Me?"
@@ -69,7 +71,7 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
 
   - AMY ADAMS, "Vice"
   - MARINA DE TAVIRA, "Roma"
-  - **REGINA KING, "If Beale Street Could Talk"**
+  - ***REGINA KING, "If Beale Street Could Talk"***
   - EMMA STONE, "The Favourite"
   - RACHEL WEISZ, "The Favourite"
 
@@ -79,27 +81,27 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - ISLE OF DOGS
   - MIRAI
   - RALPH BREAKS THE INTERNET
-  - **SPIDER-MAN: INTO THE SPIDER-VERSE**
+  - ***SPIDER-MAN: INTO THE SPIDER-VERSE***
 
 #### CINEMATOGRAPHY
 
   - COLD WAR
   - THE FAVOURITE
   - NEVER LOOK AWAY
-  - **ROMA**
+  - ***ROMA***
   - A STAR IS BORN
 
 #### COSTUME DESIGN
 
   - THE BALLAD OF BUSTER SCRUGGS
-  - BLACK PANTHER
+  - *BLACK PANTHER*
   - **THE FAVOURITE**
   - MARY POPPINS RETURNS
   - MARY QUEEN OF SCOTS
 
 #### DOCUMENTARY (FEATURE)
 
-  - **FREE SOLO**
+  - ***FREE SOLO***
   - HALE COUNTY THIS MORNING, THIS EVENING
   - MINDING THE GAP
   - OF FATHERS AND SONS
@@ -111,12 +113,12 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - **END GAME**
   - LIFEBOAT
   - A NIGHT AT THE GARDEN
-  - PERIOD. END OF SENTENCE.
+  - *PERIOD. END OF SENTENCE.*
 
 #### FILM EDITING
 
   - BLACKKKLANSMAN
-  - BOHEMIAN RHAPSODY
+  - *BOHEMIAN RHAPSODY*
   - THE FAVOURITE
   - GREEN BOOK
   - **VICE**
@@ -126,18 +128,18 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - CAPERNAUM, Lebanon
   - COLD WAR, Poland
   - NEVER LOOK AWAY, Germany
-  - **ROMA, Mexico**
+  - ***ROMA, Mexico***
   - SHOPLIFTERS, Japan
 
 #### MAKEUP AND HAIRSTYLING
 
   - BORDER
   - MARY QUEEN OF SCOTS
-  - **VICE**
+  - ***VICE***
 
 #### MUSIC (ORIGINAL SCORE)
 
-  - **BLACK PANTHER**
+  - ***BLACK PANTHER***
   - BLACKKKLANSMAN
   - IF BEALE STREET COULD TALK
   - ISLE OF DOGS
@@ -148,12 +150,12 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - ALL THE STARS from Black Panther
   - I'LL FIGHT from RBG
   - THE PLACE WHERE LOST THINGS GO from Mary Poppins Returns
-  - **SHALLOW from A Star Is Born**
+  - ***SHALLOW from A Star Is Born***
   - WHEN A COWBOY TRADES HIS SPURS FOR WINGS from The Ballad of Buster Scruggs
   
 #### PRODUCTION DESIGN
 
-  - BLACK PANTHER
+  - *BLACK PANTHER*
   - **THE FAVOURITE**
   - FIRST MAN
   - MARY POPPINS RETURNS
@@ -162,7 +164,7 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
 #### SHORT FILM (ANIMATED)
 
   - ANIMAL BEHAVIOUR
-  - **BAO**
+  - ***BAO***
   - LATE AFTERNOON
   - ONE SMALL STEP
   - WEEKENDS
@@ -173,12 +175,12 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
   - FAUVE
   - **MARGUERITE**
   - MOTHER
-  - SKIN
+  - *SKIN*
 
 #### SOUND EDITING
 
   - BLACK PANTHER
-  - **BOHEMIAN RHAPSODY**
+  - ***BOHEMIAN RHAPSODY***
   - FIRST MAN
   - A QUIET PLACE
   - ROMA
@@ -186,7 +188,7 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
 #### SOUND MIXING
 
   - BLACK PANTHER
-  - **BOHEMIAN RHAPSODY**
+  - ***BOHEMIAN RHAPSODY***
   - FIRST MAN
   - ROMA
   - A STAR IS BORN
@@ -195,14 +197,14 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
 
   - AVENGERS: INFINITY WAR
   - CHRISTOPHER ROBIN
-  - **FIRST MAN**
+  - ***FIRST MAN***
   - READY PLAYER ONE
   - SOLO: A STAR WARS STORY
 
 #### WRITING (ADAPTED SCREENPLAY)
 
   - THE BALLAD OF BUSTER SCRUGGS
-  - **BLACKKKLANSMAN**
+  - ***BLACKKKLANSMAN***
   - CAN YOU EVER FORGIVE ME?
   - IF BEALE STREET COULD TALK
   - A STAR IS BORN
@@ -211,7 +213,7 @@ My predictions are below, in bold. After the Academy Awards tomorrow, I will upd
 
   - **THE FAVOURITE**
   - FIRST REFORMED
-  - GREEN BOOK
+  - *GREEN BOOK*
   - ROMA
   - VICE
   

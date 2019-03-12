@@ -6,6 +6,12 @@ comments: no
 
 ## Talks
 
+### 2019
+
+  - Principles of Surgery, University of Saskatchewan, Saskatoon SK
+    + Introduction to Biostatistics
+    + [Slides]({{ site.github.url }}/slides/intro_to_biostats.pdf)
+
 ### 2018
 
   - Joint Special Seminar, Departments of Statistics and Computer Science, University of Manitoba, Winnipeg MB

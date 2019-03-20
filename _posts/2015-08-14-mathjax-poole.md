@@ -6,11 +6,11 @@ permalink: mathjax-poole
 comments: true
 ---
 
-I had some trouble rendering correctly the mathematical equations in my [previous post](http://turgeonmaxime.github.io/pcev/): at first I could only see the untransformed markup, then the text simply disappeared, without being transformed, and finally the equations appeared, but coloured orange. As you can see, everything now looks fine, but to fix this I ended up learning a bit more about how markdown, HTML, CSS and javacript all work together to create the website you are currently visiting. The purpose of this post is to share some of what I learned, so that future visitors can be spared some of the pain that accompanied the learning.
+I had some trouble rendering correctly the mathematical equations in my [previous post]({{ site.github.url }}/pcev/): at first I could only see the untransformed markup, then the text simply disappeared, without being transformed, and finally the equations appeared, but coloured orange. As you can see, everything now looks fine, but to fix this I ended up learning a bit more about how markdown, HTML, CSS and javacript all work together to create the website you are currently visiting. The purpose of this post is to share some of what I learned, so that future visitors can be spared some of the pain that accompanied the learning.
 
 <!--more-->
 
-As a disclaimer, I want to say that some of the following material is already well covered elsewhere on the web (e.g. take a look at [Chris Poole's blog post](http://christopherpoole.github.io/using-mathjax-on-github-pages/)). Indeed, the only thing I had to figure out on my own is how to fix the orange font. In any case, I hope the extra background can be useful -- it certainly was for me.
+As a disclaimer, I want to say that some of the following material is already well covered elsewhere on the web (e.g. take a look at [Chris Poole's blog post](https://christopherpoole.github.io/using-mathjax-on-github-pages/)). Indeed, the only thing I had to figure out on my own is how to fix the orange font. In any case, I hope the extra background can be useful -- it certainly was for me.
 
 ### MathJax
 

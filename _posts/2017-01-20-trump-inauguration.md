@@ -14,7 +14,7 @@ Earlier this week, on January 20th 2017, Donald J. Trump was inaugurated as the 
 
 ## Data extraction
 
-The data was extracted from the website of [The American Presidency Project](http://www.presidency.ucsb.edu/) at the University of California--Santa Barbara. They have lots of interesting information, and in particular they have the transcripts of **all** [inaugural addresses](http://www.presidency.ucsb.edu/inaugurals.php) ever delivered. So using Chrome's developper tools, I found a quick and dirty way of extracting the text from all these speeches. I'm using the [`rvest` package](https://cran.r-project.org/package=rvest). Also, I'm indexing each speech by the year of its corresponding inauguration.
+The data was extracted from the website of [The American Presidency Project](https://www.presidency.ucsb.edu/) at the University of California--Santa Barbara. They have lots of interesting information, and in particular they have the transcripts of **all** [inaugural addresses](https://www.presidency.ucsb.edu/inaugurals.php) ever delivered. So using Chrome's developper tools, I found a quick and dirty way of extracting the text from all these speeches. I'm using the [`rvest` package](https://cran.r-project.org/package=rvest). Also, I'm indexing each speech by the year of its corresponding inauguration.
 
 
 {% highlight r %}

@@ -8,6 +8,9 @@ comments: no
 
 ### 2019
 
+  - PhD Thesis Defense, McGill University, Montreal QC
+    + [Slides]({{ site.github.url }}/slides/MTurgeon_PhD_defense_slides.pdf)
+
   - Principles of Surgery, University of Saskatchewan, Saskatoon SK
     + Introduction to Biostatistics
     + [Slides]({{ site.github.url }}/slides/intro_to_biostats.pdf)

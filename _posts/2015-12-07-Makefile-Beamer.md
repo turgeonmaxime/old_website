@@ -45,7 +45,7 @@ targets: dependencies
   instructions
 {% endhighlight %}
 
-Note that you need a hard tab at the beginning of the instructions, or otherwise you will get a missing operator error (although you can circumvent this [using semi-colons if you want](http://stackoverflow.com/a/14109796/2836971)).
+Note that you need a hard tab at the beginning of the instructions, or otherwise you will get a missing operator error (although you can circumvent this [using semi-colons if you want](https://stackoverflow.com/a/14109796/2836971)).
   
 Let's look at one example: one target we are interested in is ```talk_handout.pdf```, the output when compiling ```talk_handout.tex``` with ```pdflatex```. We want to recompile it when either ```talk_handout.tex``` or ```talk.tex``` is changed. Therefore in the Makefile, we would write
 

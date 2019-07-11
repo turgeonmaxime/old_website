@@ -221,7 +221,7 @@ The least relevant variable is the weight of the prostate. But we only ended up 
 
 ## Perturbation and Instability
 
-In a [1996 Annals of Statistics paper](http://projecteuclid.org/euclid.aos/1032181158), Leo Breiman described several undesirable properties that subset selection methods have. I will focus on only one of them: **instability**. By instability, I mean that small changes in the data can lead to the selection of a different model.
+In a [1996 Annals of Statistics paper](https://projecteuclid.org/euclid.aos/1032181158), Leo Breiman described several undesirable properties that subset selection methods have. I will focus on only one of them: **instability**. By instability, I mean that small changes in the data can lead to the selection of a different model.
 
 We will investigate this phenomenon through simulations. I will randomly select one observation and change its value for the response variable. I repeat this process 500 times, and I look at the percentage of time each variable was selected in the model. So I am only changing **one number** in the whole dataset.
 

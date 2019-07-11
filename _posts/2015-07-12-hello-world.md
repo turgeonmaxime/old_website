@@ -8,4 +8,4 @@ I am finally launching my personal website! It will mainly be used to share my p
 
 In the meantime, I encourage you to take a look at my <a href="https://github.com/turgeonmaxime"> Github page</a>, where you can see some of the projects I've contributed to.
 
-Finally, please note that this website is powered by [knitr](http://yihui.name/knitr/), [pandoc](pandoc.org/), and [jekyll](jekyllrb.com/), it is hosted on [Github](https://github.com/), and I used the [Hyde](https://github.com/poole/hyde) template provided by [poole](http://getpoole.com/).
+Finally, please note that this website is powered by [knitr](https://yihui.name/knitr/), [pandoc](https://pandoc.org/), and [jekyll](https://jekyllrb.com/), it is hosted on [Github](https://github.com/), and I used the [Hyde](https://github.com/poole/hyde) template provided by [poole](http://getpoole.com/).

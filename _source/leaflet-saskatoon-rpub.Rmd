@@ -5,7 +5,7 @@ output:
   html_notebook: default
 ---
 
-Thanks to [Code for America](http://codeforamerica.org) for sharing the GeoJSON on their [Github page](https://github.com/codeforamerica/click_that_hood).
+Thanks to [Code for America](https://codeforamerica.org) for sharing the GeoJSON on their [Github page](https://github.com/codeforamerica/click_that_hood).
 
 ### Saskatoon
 

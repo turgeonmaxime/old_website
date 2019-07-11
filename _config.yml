@@ -11,14 +11,14 @@ permalink:        pretty
 title:            MTurgeon
 tagline:          'Maxime Turgeon'
 description:      'My personal webpage'
-url:              http://turgeonmaxime.github.io
+url:              htps://maxturgeon.ca/
 baseurl:	  '/'
 encoding: 	  utf-8
 
 author:
   name:           'Maxime Turgeon'
-  email:	  maxime.turgeon@mail.mcgill.ca
-  url:            http://turgeonmaxime.github.io
+  email:	  max.turgeon@umanitoba.ca
+  url:            https://maxturgeon.ca/
   github:         turgeonmaxime
   twitter:        mturg1989
 

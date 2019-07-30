@@ -15,6 +15,9 @@ title: Publications
 
   1. **Turgeon, M.**, Greenwood, C.M.T., Labbe, A. "A Tracy-Widom Empirical Estimator For Valid P-values With High-Dimensional Datasets". A preprint is available on [arxiv.org](https://arxiv.org/abs/1811.07356).
  
+### PhD thesis
+
+  - *Dimension Reduction and High-Dimensional Data: Estimation and Inference with Application to Genomics and Neuroimaging*, written under the supervision of [Dr. Celia Greenwood](https://mcgill.ca/statisticalgenetics/) and [Dr. Aurélie Labbe](https://www.hec.ca/en/profs/aurelie.labbe.html). A pdf version is available [here]({{ site.github.url }}/pdfs/MaximeTurgeon_PhDthesis.pdf)
 
 ### Master's thesis
 

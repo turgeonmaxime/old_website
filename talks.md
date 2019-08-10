@@ -14,6 +14,11 @@ comments: no
   - Principles of Surgery, University of Saskatchewan, Saskatoon SK
     + Introduction to Biostatistics
     + [Slides]({{ site.github.url }}/slides/intro_to_biostats.pdf)
+    
+  - ICSA-Canada Chapter 2019 Symposium, Queen's University, Kingston, ON
+    + A Tracy-Widom Empirical Estimator For Valid P-values With High-Dimensional Datasets
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-ICSA_2019-08-10_handout.pdf)
+    + [Demo](https://mybinder.org/v2/gh/turgeonmaxime/pcev-demo/master?urlpath=rstudio)
 
 ### 2018
 

@@ -4,7 +4,7 @@ title: About
 ---
 
 <p class="message">
-  This is the personal webpage of Maxime Turgeon. I am an Assistant Professor at the <a href="http://umanitoba.ca/">University of Manitoba</a>. This is a joint position between the <a href="https://www.sci.umanitoba.ca/statistics/">Department of Statistics</a> and the <a href="https://www.sci.umanitoba.ca/cs/">Department of Computer Science</a>.
+  This is my personal webpage. I am an Assistant Professor at the <a href="http://umanitoba.ca/">University of Manitoba</a>. This is a joint position between the <a href="https://www.sci.umanitoba.ca/statistics/">Department of Statistics</a> and the <a href="https://www.sci.umanitoba.ca/cs/">Department of Computer Science</a>.
   
   My main research interests are dimension reduction methods for high-dimensional data. This includes linear approaches (e.g. PCA, CCA, PCEV, PLS) as well as nonlinear approaches (e.g. manifold learning, autoencoders). I am interested in developing statistical methodologies that are statistically and computationally efficient. I am also interested in applications to statistical genetics, genomics, and neuroimaging.
   

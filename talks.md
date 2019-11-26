@@ -19,6 +19,10 @@ comments: no
     + A Tracy-Widom Empirical Estimator For Valid P-values With High-Dimensional Datasets
     + [Slides]({{ site.github.url }}/slides/MTurgeon-ICSA_2019-08-10_handout.pdf)
     + [Demo](https://mybinder.org/v2/gh/turgeonmaxime/pcev-demo/master?urlpath=rstudio)
+  - Bioinformatics-Biostatistics Research Seminar, University of Manitoba, Winnipeg MB
+    + `casebase`: An alternative framework for survival analysis
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-2019-UManitoba-Biostats.pdf)
+    + [Package website](http://sahirbhatnagar.com/casebase/)
 
 ### 2018
 

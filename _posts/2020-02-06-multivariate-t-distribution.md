@@ -33,13 +33,13 @@ ggplot(Y, aes(X1, X2)) +
   theme_minimal()
 ```
 
-![]({{ site.github.url }}/figure/posts/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
+![](/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-1-1.pdf)<!-- --> 
 
 Elliptical distributions are a generalization of the multivariate normal distribution that retain this property that lines of constant density are ellipses. 
 
 <!--more-->
 
-There are many ways to formalise this definition. For example, let \\( \mu\in\mathbb{R}^p )\\ and \\( \Lambda )\\ be a \\( p\times p )\\ positive-definite matrix. If \\( \mathbf{Y} )\\ has density
+There are many ways to formalise this definition. For example, let $$\mu\in\mathbb{R}^p$$ and $$\Lambda$$ be a $$p\times p$$ positive-definite matrix. If $$\mathbf{Y}$$ has density
 
 $$f(\mathbf{Y}) = \lvert\Lambda\rvert^{-1/2}g\left((\mathbf{Y} - \mu)^T\Lambda^{-1}(\mathbf{Y} - \mu)\right),$$
 
@@ -156,6 +156,6 @@ data_plot %>%
   geom_density2d()
 ```
 
-![]({{ site.github.url }}/figure/posts/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+![](/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
 
 As we can see from the left panel, by multiplying two marginal *t* distribution, we do not get an elliptical distribution; the contour lines are closer to diamonds.

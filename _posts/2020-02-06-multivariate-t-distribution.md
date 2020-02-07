@@ -33,7 +33,7 @@ ggplot(Y, aes(X1, X2)) +
   theme_minimal()
 ```
 
-![Elliptical contours of multivariate normal]({{ site.github.url }}/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-1-1.pdf) 
+![Elliptical contours of multivariate normal]({{ site.github.url }}/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-1-1.png) 
 
 Elliptical distributions are a generalization of the multivariate normal distribution that retain this property that lines of constant density are ellipses. 
 
@@ -156,6 +156,6 @@ data_plot %>%
   geom_density2d()
 ```
 
-![Comparison of joint vs independent t distributions]({{ site.github.url }}/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-5-1.pdf) 
+![Comparison of joint vs independent t distributions]({{ site.github.url }}/figure/source/2020-02-06-multivariate-t-distribution_files/figure-latex/unnamed-chunk-5-1.png) 
 
 As we can see from the left panel, by multiplying two marginal *t* distribution, we do not get an elliptical distribution; the contour lines are closer to diamonds.

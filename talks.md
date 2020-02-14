@@ -6,6 +6,12 @@ comments: no
 
 ## Talks
 
+### 2020
+
+  - Statistics Seminar, University of Winnipeg, Winnipeg MB
+    + Principal Component of Explained Variance: High-Dimensional Estimation and Inference
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-UWinnipeg_2020-02-14_handout.pdf)
+
 ### 2019
 
   - PhD Thesis Defense, McGill University, Montreal QC

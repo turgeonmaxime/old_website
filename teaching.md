@@ -5,7 +5,7 @@ title: Teaching
 
 During the academic year 2020-21, I am teaching the following courses:
 
-  - STAT 3150--Statistical Computing (Fall 2019)
+  - STAT 3150--Statistical Computing (Fall 2020)
   - SCI 2000--Introduction to Data Science (Winter 2021)
 
 Here is a list of courses I have taught in the past:

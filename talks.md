@@ -10,8 +10,7 @@ comments: no
 
   - Science Public Online Talks, University of Manitoba, Manitoba MB
     + How to see in 100 dimensions: Transforming your data to better understand it
-    + [Slides]({{ site.github.url }}/slides/MTurgeon-SPOT-June2020.html)
-    + [Video] (https://youtu.be/vpJ26YHgrDw)
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-SPOT-June2020.html) and [Video](https://youtu.be/vpJ26YHgrDw)
   - Statistics Seminar, University of Winnipeg, Winnipeg MB
     + Principal Component of Explained Variance: High-Dimensional Estimation and Inference
     + [Slides]({{ site.github.url }}/slides/MTurgeon-UWinnipeg_2020-02-14_handout.pdf)

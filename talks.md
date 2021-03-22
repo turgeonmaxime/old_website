@@ -6,9 +6,23 @@ comments: no
 
 ## Talks
 
+### 2021
+
+  - UQAM Statistics Seminar, Université du Québec à Montréal, Montréal QC
+    + Analyser les tweets de chefs politiques canadiens grâce à l’Analyse Topologique de Données
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-UQAM_03-18-2021.pdf)
+
+  - Machine Learning Special Interest Group, University of Manitoba, Winnipeg MB
+    + Investigating text data using Topological Data Analysis
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-MLSIG_03-11-2021.pdf)
+
 ### 2020
 
-  - Science Public Online Talks, University of Manitoba, Manitoba MB
+  - useR 2020, Online conference
+    + Arbitrary-precision linear algebra in `R` using `RcppEigen` and `BH
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-useR-July2020.html)
+
+  - Science Public Online Talks, University of Manitoba, Winnipeg MB
     + How to see in 100 dimensions: Transforming your data to better understand it
     + [Slides]({{ site.github.url }}/slides/MTurgeon-SPOT-June2020.html) and [Video](https://youtu.be/vpJ26YHgrDw)
   - Statistics Seminar, University of Winnipeg, Winnipeg MB

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>How to see in 100 dimensions</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Max Turgeon" />
+    <meta name="date" content="2021-07-15" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="umanitoba.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# How to see in 100 dimensions
+## Lunch with Wawatay fellows
+### Max Turgeon
+### University of Manitoba
+### 15 July 2021
+
+---
+
+
+
+
+
+class: middle, center, inverse
+
+# Every day tons of data are being collected and analysed.
+
+???
+
+Changes in technology make this faster, easier, and cheaper.
+
+Every time you visit a website, go to the hospital.
+
+More complex data, e.g. pictures, videos, text.
+
+---
+
+# Improving Health Care
+
+&lt;img src="figures/medical_encounter.png" width="625px" height="460px"/&gt;
+
+???
+
+Examples of problems we can try to solve
+
+Registration asks questions, physician assessment in ER, tests being done, admission to internal medicine, diagnoses.
+
+Use this information to improve health care:
+  - How can we reduce wait times?
+  - Are we doing too many tests?
+  - Where should we put more beds?
+  - How likely is a patient to come back?
+
+---
+
+# Sports Analytics
+
+![](figures/baseball_shift.jpg)
+.small[WSJ, March 2014]
+
+???
+
+Collect data on type/speed of pitch, strike/ball, type of hit, where does the ball fall.
+
+Use this information to improve performance:
+  - What type of pitch works best under different circumstances?
+  - Who should try to steal a base and when?
+  - Where should we put defensive players?
+
+---
+
+class: center
+
+# Take-home message
+
+### Data science for .strong[complex data]
+
+???
+
+DS = Emerging discipline
+
+Complex = unstructured, high-volume, etc.
+
+--
+
+### Data science to gain .strong[insight] and .strong[solve problems]
+
+--
+
+### .strong[Transforming data] can help with understanding
+
+???
+
+Dimension reduction solves real-life problems, and we'll see examples below.
+
+---
+
+## Data Science
+
+  - Combines **statistics**, **computer science** and **subject matter**
+
+.center[![](figures/venn_diag.png)]
+
+ - Look for evidence of relationships between variables
+
+???
+
+DS = Emerging discipline
+
+  - Statistics = understanding properties of sampling and data
+  - Computer Science = extract and manipulate data
+  - Subject matter = know which questions to ask
+
+---
+
+## Dimension reduction
+
+.center[![](figures/red-arrow.png)]
+.pull-left[![](figures/penguin_pre.png)]
+
+???
+
+Dataset on penguins, different species with body measurements
+
+Dimension reduction = Finding "hidden" structures in data
+
+Rotation, reflection, rescaling, and projection onto lower plane
+
+Can help find relationship between 100s of variables
+OR
+After transformation, relationships may be easier to see
+
+--
+
+.pull-right[![](figures/penguin_post.png)]
+
+---
+
+# Two examples
+
+#### 1. Population structure
+  - Genetic epidemiology
+  
+--
+  
+#### 2. Canadian politics and Twitter
+  - Natural language processing
+  - *Work by Joshua Hamilton (Joint CS and Statistics)*
+  
+---
+
+# Genotype data
+
+.center[![](figures/red-arrow.png)]
+.pull-left[![](figures/DNA_nucleotide.jpg)]
+
+???
+
+DNA sequence is made of nucleotides (ATCG)
+
+Technology "measures" or "estimates" what the nucleotide is at genomic locations
+
+Millions or billions of locations, on thousands of people
+
+--
+
+.pull-right[
+
+```
+##      Pos1 Pos2 Pos3 Pos4 Pos5 Pos6 Pos7
+## Ind1    1    2    0    2    1    2    0
+## Ind2    0    2    2    1    0    0    2
+## Ind3    0    0    1    0    0    0    2
+## Ind4    2    2    0    1    2    1    1
+```
+]
+
+???
+
+Can we find some hidden relationship in the data?
+---
+
+### **Estimating population structure**
+
+.center[![](figures/europe_pca.jpg)]
+.small[Novembre *et al* (2008). "Genes mirror geography within Europe."]
+
+???
+
+DNA is transmitted from parents to offspring
+
+DNA contains information about ancestry
+
+Ancestry is correlated with geography
+
+---
+
+# Why?
+
+#### 1. Both disease and genetic information vary geographically.
+
+--
+
+#### 2. When looking for genetic source of diseases, this can lead to spurious results.
+  
+--
+
+.center[**Possible solution**: Account for population structure.]
+
+---
+
+# Unstructured text data
+
+.center[![](figures/red-arrow.png)]
+.pull-left[![](figures/Wordplot.png)]
+
+???
+
+Natural language are very hard to analyse because of all implicit rules and context that humans have
+
+We can still extract information by looking at which words appear in a given tweet
+
+Bag of words
+
+--
+
+.pull-right[
+
+```
+##        people ahead scheer trudeau taxes
+## Tweet1      0     1      1       1     1
+## Tweet2      0     1      1       1     0
+## Tweet3      0     1      0       1     0
+## Tweet4      0     0      1       1     0
+## Tweet5      0     0      1       1     0
+## Tweet6      1     0      1       1     0
+```
+]
+
+???
+
+For each word, we keep track of whether it appeared in a given tweet
+
+---
+
+### **Estimating semantic structure**
+
+.center[![](figures/PCA Scatter All Issues.png)]
+
+???
+
+Choice of words alone captures information about political stance
+
+---
+
+# Why?
+
+#### Computers are not very good at understanding natural languages
+
+  - Unlike humans!
+
+--
+
+#### It can be difficult to analyse large volumes of text data
+
+--
+
+.center[**Possible solution**: Transform text data into numerical values.]
+
+???
+
+With example above, we can look at whether there are more or less differences when looking at specific topics
+
+---
+
+# Conclusion
+
+#### We are surrounded by complex data
+
+  - Also: images, videos, networks, etc.
+
+#### Data science provides us with tools to tackle these challenges
+
+#### Dimension reduction is one way to find hidden structure in data
+
+---
+
+class: title-slide-final, middle, center
+
+# Slides can be found at 
+
+### [maxturgeon.ca/talks](https://maxturgeon.ca/talks)
+
+# Questions?
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

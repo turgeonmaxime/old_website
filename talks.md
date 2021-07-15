@@ -8,6 +8,10 @@ comments: no
 
 ### 2021
 
+  - Wawatay Orientation Lunch, Winnipeg MB
+    + How to see in 100 dimensions
+    + [Slides]({{ site.github.url }}/slides/MTurgeon-Wawatay_Lunch-July2021.html)
+
   - UQAM Statistics Seminar, Université du Québec à Montréal, Montréal QC
     + Analyser les tweets de chefs politiques canadiens grâce à l’Analyse Topologique de Données
     + [Slides]({{ site.github.url }}/slides/MTurgeon-UQAM_03-18-2021.pdf)
@@ -19,7 +23,7 @@ comments: no
 ### 2020
 
   - useR 2020, Online conference
-    + Arbitrary-precision linear algebra in `R` using `RcppEigen` and `BH
+    + Arbitrary-precision linear algebra in `R` using `RcppEigen` and `BH`
     + [Slides]({{ site.github.url }}/slides/MTurgeon-useR-July2020.html)
 
   - Science Public Online Talks, University of Manitoba, Winnipeg MB

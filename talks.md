@@ -8,6 +8,10 @@ comments: no
 
 ### 2021
 
+  - Visual and Disease Analytics, Lightning Talk
+    + Dimension Reduction for Complex High-Dimensional Data
+    + [Slides]({{ site.github.url }}/slides/MTurgeon_VADA_LightningTalk.html)
+
   - Wawatay Orientation Lunch, Winnipeg MB
     + How to see in 100 dimensions
     + [Slides]({{ site.github.url }}/slides/MTurgeon-Wawatay_Lunch-July2021.html)

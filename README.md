@@ -1,3 +1,2 @@
-# turgeonmaxime.github.io
-
-This is the repository for my personal website.
+# old_website
+This is the old repository for my personal website. It has been archived and is now read-only.
